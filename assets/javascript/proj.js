@@ -74,6 +74,8 @@ var start = $("#starts").val();
   $("#sub3").on("click",  function(){
  event.preventDefault();
 
+// service = new google.maps.places.PlacesService(map);
+// service.nearbySearch(request, callback);
 
 // Places Search
 // function initialize() {
@@ -108,7 +110,7 @@ var start = $("#starts").val();
 
 
 
-
+// Maps Search
  var directionsDisplay,
     directionsService,
     map;
@@ -119,7 +121,7 @@ var map;
 var service;
 var infowindow;
 
-// Maps Search
+
 function initialize() {
   var directionsService = new google.maps.DirectionsService();
   directionsDisplay = new google.maps.DirectionsRenderer();
