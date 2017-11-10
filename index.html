@@ -6,11 +6,20 @@
 </head>
 <body>
 <h1>To Do List:</h1>
-<h3>Starting Point</h3>
-<input type="text" name="starts" id="starts">
-<input type="submit" name="sub" id="sub1">
-<div id="starthere"></div>
+<style type="text/css">
+#right  {
+	text-align: right;
+	margin-right: 300px;
+}
 
+</style>
+<div id="right">
+	<h2>My List:</h2>
+	<input type="submit" name="find" id="route" value="FIND ROUTE">
+</div>
+
+
+<div id="thinghere"></div>
 <style type="text/css">
   
   #thinghere{
@@ -18,28 +27,48 @@
     float: right;
   }
 </style>
-<div id="thinghere"></div>
+
+<h3>Starting Point</h3>
+<input type="text" name="starts" id="starts">
+<input type="submit" name="sub" id="sub1">
+<div id="starthere"></div>
+
+
 
 <h3>Ending Point</h3>
 <input type="text" name="ends" id="ends">
 <input type="submit" name="sub" id="sub2">
 <br>
 
-<h4>Thing 1</h4>
+<h4>Things to do</h4>
 <input type="text" name="thing1" id="thing1">
 <input type="submit" name="sub" id="sub3">
+<br>
+<div id="list"></div>
+
 <style type="text/css">
-  p {
+
+
+
+ .things  {
 
 float: left;
 margin: 10px;
 border: 2px solid black;
-padding: 5px;
+
 width: 400px;
 line-height: 20px;
   }
+
+  p {
+
+  	margin-left: 5px;
+  	margin-bottom: 5px;
+  	margin-top: 5px;
+  }
 </style>
-<div id="list">
+
+
   
 </div>
 
