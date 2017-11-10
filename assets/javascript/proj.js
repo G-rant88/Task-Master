@@ -1,180 +1,53 @@
-// var key = "AIzaSyBm04RwZjjDTqmjQlDjzAH3zSAJwSSlIgs";
-// var start = "10995+Le+Conte+Ave&destination=10995+Le+Conte+Ave";
-// var end = "10995+Le+Conte+Ave&destination=10995+Le+Conte+Ave";
-// var search = "restaurants";
-// var waypoints = "10995+Le+Conte+Ave&destination=10995+Le+Conte+Ave"
-// var mapsUrl = "https://maps.googleapis.com/maps/api/js?key=" + key + "&callback=initMap";
-// var placesUrl = "https://maps.googleapis.com/maps/api/js?key=" + key + "&libraries=places";
-// var home = "123 Main St, Northeast Harbor, ME 04662, United States";
+// var query = $("#thing1").val();
+// var location = $("#starts").val();
+// var url = "https://api.foursquare.com/v2/venues/search?&query=" + query + "&mode=url&limit=5&near=" + location + "&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
 
+	var p = $("<p>");
+$("#sub1").on("click", function(){
 
+var location = $("#starts").val().trim();
+$("#starthere").html("Searching Near: " + location);
 
-// var map;
-// var service;
-// var infowindow;
-// var search = $("#thing1").val();
-
-
-
-
-// // service = new google.maps.places.PlacesService(map);
-// // service.textSearch(request, callback);
-
-
-// function initialize() {
-//   var home = new google.maps.LatLng(44.29371940000001, -68.2890729);
-
-//   map = new google.maps.Map(document.getElementById('map'), {
-//       center: home,
-//       zoom: 15
-//     });
-
-//   var request = {
-//     location: home,
-//     radius: '500',
-//     query: 'food'
-//   };
-
-// service = new google.maps.places.PlacesService(map);
-//   service.textSearch(request, callback);
-
-
-// }
-
-// function callback(results, status) {
-//   if (status == google.maps.places.PlacesServiceStatus.OK) {
-//     for (var i = 0; i < results.length; i++) {
-//       var place = results[i];
-//       createMarker(results[i]);
-//     }
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var start = $("#starts").val();
-
-
-
-  $("#sub3").on("click",  function(){
- event.preventDefault();
-
-// service = new google.maps.places.PlacesService(map);
-// service.nearbySearch(request, callback);
-
-// Places Search
-// function initialize() {
-//   var home = new google.maps.LatLng(34.052235, -118.243683);
-
-//   map = new google.maps.Map(document.getElementById('map'), {
-//       center: home,
-//       zoom: 15
-//     });
-
-//   var request = {
-//     location: home,
-//     radius: '500',
-//     type: ['restaurant']
-//   };
-
-//   service = new google.maps.places.PlacesService(map);
-//   service.nearbySearch(request, callback);
-// }
-
-// function callback(results, status) {
-//   if (status == google.maps.places.PlacesServiceStatus.OK) {
-//     for (var i = 0; i < results.length; i++) {
-//       var place = results[i];
-//       createMarker(results[i]);
-//     }
-//   }
-// }
-
-
-
-
-
-
-// Maps Search
- var directionsDisplay,
-    directionsService,
-    map;
-
-
-
-var map;
-var service;
-var infowindow;
-
-
-function initialize() {
-  var directionsService = new google.maps.DirectionsService();
-  directionsDisplay = new google.maps.DirectionsRenderer();
-  var home = new google.maps.LatLng(34.052235, -118.243683);
-  var mapOptions = { zoom:7, mapTypeId: google.maps.MapTypeId.ROADMAP, center: home }
-  map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-  directionsDisplay.setMap(map);
-}
-
-      
-
-initialize();
 
 });
 
+$("#sub3").on("click", function(){
+var query = $("#thing1").val().trim();
+var location = $("#starts").val().trim();
+	// var url = "https://api.foursquare.com/v2/venues/search?&query=" + query + "&mode=url&limit=5&near=North%20Hollywood%20Los%20Angeles%2C%20CA%2C%20United%20States&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+ var url = "https://api.foursquare.com/v2/venues/search?&query=" + query + "&mode=url&limit=5&near=" + location + "%2C%20CA%2C%20United%20States&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+
+$.ajax({
+
+url: url,
+method: "GET"
+
+}).done( function (call){
+
+for (var i = 0; i < 5; i++) {
+		console.log(call);
+	 p = $("<p>");
+	// var p2 = $("<p>");
+	// var p3 = $("<p>");
+	var br = $("<br>")
+	var br2 = $("<br>")
+	p.append("Name: " + call.response.venues[i].name);
+	$("#list").append(p);
+	p.append(br2);
+	
+p.append("Location: " + call.response.venues[i].location.formattedAddress);
+$("#list").append(p);
+p.append(br);
+p.append("Category: " + call.response.venues[i].categories[0].name);
+ $("#list").append(p);
+}
+});
+
+});
+
+// $(document).on("click", p, function() {
 
 
+// $("#thinghere").append(this);
 
-// var places = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=food+in+123+main+street&key=AIzaSyDiU0yNUkknW32yOxZpTm4Cii_z8YqttuE";
-
-
-
-//  $.ajax({
-
-
-//   url: places,
-//    method: "GET"
-
-     
-     
-
-
-//  }).done(function(info){
-
-//  var business = ("<p> Name: " + info.results.name);
-//  var rating = ("<p> rating: " + info.results.rating);
-//  var address = ("<p> address: " + info.results.formatted_address);
-
-//  $("#print").append(business, rating, address);
-
-//  });
-
-//  });
-
-
-      
-//  function list(){
-
-// var key = "AIzaSyBm04RwZjjDTqmjQlDjzAH3zSAJwSSlIgs";	
-
-//  var placesUrl = "https://maps.googleapis.com/maps/api/js?key=" + key + "&libraries=places";
-
-
-//  console.log(search);
-
-// }
+// });
