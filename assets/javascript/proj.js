@@ -41,13 +41,12 @@ for (var i = 0; i < 5; i++) {
 	p3.append("Category: " + call.response.venues[i].categories[0].name);
 	 
 	newDiv.append(p, p2, p3);
- lat = call.response.venues[i].location.lat;
-	 lng = call.response.venues[i].location.lng;
 
 	 // lat.push(lats);
 	 // lng.push(lngs);
 
-
+ lat = call.response.venues[i].location.lat;
+	 lng = call.response.venues[i].location.lng;
 
 	$("#list").append(newDiv);
 
@@ -58,6 +57,7 @@ for (var i = 0; i < 5; i++) {
 // p.append("Category: " + call.response.venues[i].categories[0].name);
 //  $("#list").append(p);
 }
+
 
 
  
