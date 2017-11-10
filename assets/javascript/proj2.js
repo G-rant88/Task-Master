@@ -1,65 +1,205 @@
-var searchTerm = "";
+// var key = "AIzaSyBm04RwZjjDTqmjQlDjzAH3zSAJwSSlIgs";
+// var start = "10995+Le+Conte+Ave&destination=10995+Le+Conte+Ave";
+// var end = "10995+Le+Conte+Ave&destination=10995+Le+Conte+Ave";
+// var search = "restaurants";
+// var waypoints = "10995+Le+Conte+Ave&destination=10995+Le+Conte+Ave"
+// var mapsUrl = "https://maps.googleapis.com/maps/api/js?key=" + key + "&callback=initMap";
+// var placesUrl = "https://maps.googleapis.com/maps/api/js?key=" + key + "&libraries=places";
+// var home = "123 Main St, Northeast Harbor, ME 04662, United States";
+
+
+
+// var map;
+// var service;
+// var infowindow;
+// var search = $("#thing1").val();\
+var starting = $("#starts").val();
+var searchTerm = $("#thing1").val();
       var map, places, infoWindow;
       var markers = [];
-      var autocomplete;
-      var countryRestrict = {'country': 'us'};
+      // var autocomplete;
+      // var countryRestrict = {'country': 'us'};
       var MARKER_PATH = 'https://developers.google.com/maps/documentation/javascript/images/marker_green';
       var hostnameRegexp = new RegExp('^https?://.+?/');
 
-      var countries = {
-        'au': {
-          center: {lat: -25.3, lng: 133.8},
-          zoom: 4
-        },
-        'br': {
-          center: {lat: -14.2, lng: -51.9},
-          zoom: 3
-        },
-        'ca': {
-          center: {lat: 62, lng: -110.0},
-          zoom: 3
-        },
-        'fr': {
-          center: {lat: 46.2, lng: 2.2},
-          zoom: 5
-        },
-        'de': {
-          center: {lat: 51.2, lng: 10.4},
-          zoom: 5
-        },
-        'mx': {
-          center: {lat: 23.6, lng: -102.5},
-          zoom: 4
-        },
-        'nz': {
-          center: {lat: -40.9, lng: 174.9},
-          zoom: 5
-        },
-        'it': {
-          center: {lat: 41.9, lng: 12.6},
-          zoom: 5
-        },
-        'za': {
-          center: {lat: -30.6, lng: 22.9},
-          zoom: 5
-        },
-        'es': {
-          center: {lat: 40.5, lng: -3.7},
-          zoom: 5
-        },
-        'pt': {
-          center: {lat: 39.4, lng: -8.2},
-          zoom: 6
-        },
-        'us': {
-          center: {lat: 37.1, lng: -95.7},
-          zoom: 3
-        },
-        'uk': {
-          center: {lat: 54.8, lng: -4.6},
-          zoom: 5
-        }
-      };
+
+
+// // service = new google.maps.places.PlacesService(map);
+// // service.textSearch(request, callback);
+
+
+// function initialize() {
+//   var home = new google.maps.LatLng(44.29371940000001, -68.2890729);
+
+//   map = new google.maps.Map(document.getElementById('map'), {
+//       center: home,
+//       zoom: 15
+//     });
+
+//   var request = {
+//     location: home,
+//     radius: '500',
+//     query: 'food'
+//   };
+
+// service = new google.maps.places.PlacesService(map);
+//   service.textSearch(request, callback);
+
+
+// }
+
+// function callback(results, status) {
+//   if (status == google.maps.places.PlacesServiceStatus.OK) {
+//     for (var i = 0; i < results.length; i++) {
+//       var place = results[i];
+//       createMarker(results[i]);
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var start = $("#starts").val();
+
+
+
+
+
+// service = new google.maps.places.PlacesService(map);
+// service.nearbySearch(request, callback);
+
+// Places Search
+ // var directionsDisplay,
+ //    directionsService,
+ //    map;
+
+
+
+// var map;
+// var service;
+// var infowindow;
+
+// function initialize() {
+//   var home = new google.maps.LatLng(34.052235, -118.243683);
+
+//   map = new google.maps.Map(document.getElementById('map'), {
+//       center: home,
+//       zoom: 15
+//     });
+
+//   var request = {
+//     location: home,
+//     radius: '500',
+//     type: ['restaurant']
+//   };
+
+//   service = new google.maps.places.PlacesService(map);
+//   service.nearbySearch(request, callback);
+// }
+
+// function callback(results, status) {
+//   if (status == google.maps.places.PlacesServiceStatus.OK) {
+//     for (var i = 0; i < results.length; i++) {
+//       var place = results[i];
+//       createMarker(results[i]);
+//     }
+//   }
+// }
+
+     
+
+
+
+
+// Maps Search
+ // var directionsDisplay,
+ //    directionsService,
+ //    map;
+
+
+
+// var map;
+// var service;
+// var infowindow;
+
+
+// function initialize() {
+//   var directionsService = new google.maps.DirectionsService();
+//   directionsDisplay = new google.maps.DirectionsRenderer();
+//   var home = new google.maps.LatLng(34.052235, -118.243683);
+//   var mapOptions = { zoom:11, mapTypeId: google.maps.MapTypeId.ROADMAP, center: home }
+//   map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+//   directionsDisplay.setMap(map);
+// }
+
+      
+
+// initialize();
+
+// });
+
+
+
+
+// var places = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=food+in+123+main+street&key=AIzaSyDiU0yNUkknW32yOxZpTm4Cii_z8YqttuE";
+
+
+
+//  $.ajax({
+
+
+//   url: places,
+//    method: "GET"
+
+     
+     
+
+
+//  }).done(function(info){
+
+//  var business = ("<p> Name: " + info.results.name);
+//  var rating = ("<p> rating: " + info.results.rating);
+//  var address = ("<p> address: " + info.results.formatted_address);
+
+//  $("#print").append(business, rating, address);
+
+//  });
+
+//  });
+
+
+      
+//  function list(){
+
+// var key = "AIzaSyBm04RwZjjDTqmjQlDjzAH3zSAJwSSlIgs";	
+
+//  var placesUrl = "https://maps.googleapis.com/maps/api/js?key=" + key + "&libraries=places";
+
+
+//  console.log(search);
+
+// }
+
+
+  $("#sub3").on("click",  function(){
+ event.preventDefault();
+
+
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -74,14 +214,13 @@ var searchTerm = "";
         infoWindow = new google.maps.InfoWindow({
           content: document.getElementById('info-content')
         });
-
-        // Create the autocomplete object and associate it with the UI input control.
-        // Restrict the search to the default country, and to place type "cities".
-        autocomplete = new google.maps.places.Autocomplete(
+    
+places = new google.maps.places.PlacesService(map);
+autocomplete = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */ (
                 document.getElementById('autocomplete')), {
-              types: ['(cities)'],
-              componentRestrictions: countryRestrict
+              types: [starting],
+              
             });
         places = new google.maps.places.PlacesService(map);
 
@@ -90,7 +229,7 @@ var searchTerm = "";
         // Add a DOM event listener to react when the user selects a country.
         document.getElementById('country').addEventListener(
             'change', setAutocompleteCountry);
-      }
+      
 
       // When the user selects a city, get the place details for the city and
       // zoom the map in on the city.
@@ -100,19 +239,15 @@ var searchTerm = "";
         if (place.geometry) {
           map.panTo(place.geometry.location);
           map.setZoom(15);
-          search();
-        } else {
-          document.getElementById('autocomplete').placeholder = 'Enter a city';
-        }
       }
+  }
 
-  
+ }      
 
-      // Search for hotels in the selected city, within the viewport of the map.
-      function search() {
+function search() {
      
         var search = {
-          bounds: map.getBounds(),
+        
           types: [searchTerm]
         };
 
@@ -142,39 +277,11 @@ var searchTerm = "";
         });
       }
 
-      function clearMarkers() {
-        for (var i = 0; i < markers.length; i++) {
-          if (markers[i]) {
-            markers[i].setMap(null);
-          }
-        }
-        markers = [];
-      }
 
-      // Set the country restriction based on user input.
-      // Also center and zoom the map on the given country.
-      function setAutocompleteCountry() {
-        var country = document.getElementById('country').value;
-        if (country == 'all') {
-          autocomplete.setComponentRestrictions({'country': []});
-          map.setCenter({lat: 15, lng: 0});
-          map.setZoom(2);
-        } else {
-          autocomplete.setComponentRestrictions({'country': country});
-          map.setCenter(countries[country].center);
-          map.setZoom(countries[country].zoom);
-        }
-        clearResults();
-        clearMarkers();
-      }
 
-      function dropMarker(i) {
-        return function() {
-          markers[i].setMap(map);
-        };
-      }
+   search();
 
-      function addResult(result, i) {
+function addResult(result, i) {
         var results = document.getElementById('results');
         var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
         var markerIcon = MARKER_PATH + markerLetter + '.png';
@@ -268,5 +375,8 @@ var searchTerm = "";
         } else {
           document.getElementById('iw-website-row').style.display = 'none';
         }
-      }
-  
+      
+}
+
+});
+
