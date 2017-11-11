@@ -28,7 +28,7 @@ method: "GET"
 }).done( function (call){
 
 for (var i = 0; i < 5; i++) {
-		console.log(call);
+		// console.log(call);
 	var newDiv = $("<div>");
 	 newDiv.addClass("things");
 	 p = $("<p>");
@@ -86,7 +86,9 @@ $("#thinghere").append(pp);
  $("#thing1").val("");
  // console.log(lat[$(this).attr("value")]);
  // console.log(lng[$(this).attr("value")]);
+console.log("The Latitude is:")
  console.log(lat[$(this).attr("value")]);
+console.log("The Longitude is:")
  console.log(lng[$(this).attr("value")]);
 
 
