@@ -3,6 +3,8 @@
 // var url = "https://api.foursquare.com/v2/venues/search?&query=" + query + "&mode=url&limit=5&near=" + location + "&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
 var lat = [];
 var lng = [];
+var myLats = [];
+var myLngs = [];
 	var p = $("<p>");
 $("#sub1").on("click", function(){
 
@@ -74,9 +76,9 @@ for (var i = 0; i < 5; i++) {
 });
 
  $(document).on("click", ".things", function() {
-var pp = $("<p>");
-pp.append("Your Choice: ")
-$("#thinghere").append(pp);
+ var pp = $("<p>");
+ pp.append("Your Choice: ")
+ $("#thinghere").append(pp);
  $("#thinghere").append(this);
 
 
@@ -86,10 +88,14 @@ $("#thinghere").append(pp);
  $("#thing1").val("");
  // console.log(lat[$(this).attr("value")]);
  // console.log(lng[$(this).attr("value")]);
-console.log("The Latitude is:")
+console.log("The Latitude is:");
  console.log(lat[$(this).attr("value")]);
-console.log("The Longitude is:")
+myLats.push(lat[$(this).attr("value")]);
+console.log("The Longitude is:");
  console.log(lng[$(this).attr("value")]);
+myLngs.push(lng[$(this).attr("value")]);
+console.log(myLats);
+console.log(myLngs);
 
 
 
