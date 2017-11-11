@@ -1,76 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Proj</title>
-</head>
-<body>
-<h1>To Do List:</h1>
-<h3>Starting Point</h3>
-<input type="text" name="starts" id="starts">
-<input type="submit" name="sub" id="sub1">
+  <meta charset="utf-8">
+  <title>Proj</title>
 
-<h3>Ending Point</h3>
-<input type="text" name="ends" id="ends">
-<input type="submit" name="sub" id="sub2">
-<br>
+  <style type="text/css">
+   .things  {
+      float: left;
+      margin: 10px;
+      border: 2px solid black;
+      width: 400px;
+      line-height: 20px;
+    }
 
-<h4>Thing 1</h4>
-<input type="text" name="thing1" id="thing1">
-<input type="submit" name="sub" id="sub3">
+  #map {
+    height: 700px;
+    float: left;
+    width: 600px;
+  }
+/*    p {
+      margin-left: 5px;
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    #right {
+    text-align: right;
+    margin-right: 300px;
+    }
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyBm04RwZjjDTqmjQlDjzAH3zSAJwSSlIgs&libraries=places"></script>
+    #thinghere {
+    float: right;
+    }*/
 
-
-<div id="map_canvas" style="height: 354px; width:713px;"></div>
-
-<!-- <script>
-var directionsDisplay,
-    directionsService,
-    map;
-
-function initialize() {
-  var directionsService = new google.maps.DirectionsService();
-  directionsDisplay = new google.maps.DirectionsRenderer();
-  var home = new google.maps.LatLng(34.052235, -118.243683);
-  var mapOptions = { zoom:7, mapTypeId: google.maps.MapTypeId.ROADMAP, center: home }
-  map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-  directionsDisplay.setMap(map);
-}
-
-
-
-
-initialize();
-</script> -->
-
-
-
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initializekey=AIzaSyBm04RwZjjDTqmjQlDjzAH3zSAJwSSlIgs&libraries=places"></script> -->
-<!-- <div id="map_canvas" style="height: 354px; width:713px;"></div>
-<google-map-search libraries="places"
-                       map="[[map]]" query="food"
-                       results="{{results}}"></google-map-search>
-    <google-map libraries="places"
-                map="{{map}}" latitude="34.052235"
-                longitude="-118.243683">
-      <template is="dom-repeat" items="{{results}}" as="marker">
-        <google-map-marker latitude="{{marker.latitude}}"
-                           longitude="{{marker.longitude}}">
-          <h2>{{marker.name}}</h2>
-          <span>{{marker.formatted_address}}</span>
-        </google-map-marker>
-      </template>
-    </google-map>
-    -->
-
+</style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
- <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="assets/javascript/proj.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiU0yNUkknW32yOxZpTm4Cii_z8YqttuE"></script>
+
+</head>
+
+<body>
+
+  <h1>To Do List:</h1>
+  <div id="thinghere"></div>
+
+  <h3>Starting Point</h3>
+    <input type="text" name="starts" id="starts">
+    <input type="submit" name="sub" id="sub1">
+  <div id="starthere"></div>
+
+  <h3>Ending Point</h3>
+    <input type="text" name="ends" id="ends">
+    <input type="submit" name="sub" id="sub2">
+  <br>
+
+  <h4>Things to do</h4>
+    <input type="text" name="thing1" id="thing1">
+    <input type="submit" name="sub" id="sub3">
+  <br>
+
+  <div id="list"></div>
+
+  <div id="right">
+    <h2>My List:</h2>
+    <input type="submit" name="find" id="route" value="FIND ROUTE">
+  </div>
+
+  <div id="map"></div>
+  
+
+
 </body>
 </html>
