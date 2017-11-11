@@ -32,11 +32,14 @@ method: "GET"
 for (var i = 0; i < 5; i++) {
 		// console.log(call);
 	var newDiv = $("<div>");
-	 newDiv.addClass("things");
-	 p = $("<p>");
-	 p2 = $("<p>");
-	 p3 = $("<p>");
-	 newDiv.attr("value", i)
+	 newDiv.addClass("list-group list-group-item active");
+	 	 newDiv.attr("value", i)
+	 var p = $("<h4>");
+	 var p2 = $("<p>");
+	 var p3 = $("<p>");
+	 p.addClass("list-group-item-heading");
+	p2.addClass("list-group-item-text");
+	 p3.addClass("list-group-item-text");
 	// var p2 = $("<p>");
 	// var p3 = $("<p>");
 	// var br = $("<br>")
@@ -46,10 +49,6 @@ for (var i = 0; i < 5; i++) {
 	p3.append("Category: " + call.response.venues[i].categories[0].name);
 	 
 	newDiv.append(p, p2, p3);
-
-	 // lat.push(lats);
-	 // lng.push(lngs);
-
  lats = call.response.venues[i].location.lat;
 	 lngs = call.response.venues[i].location.lng;
 
@@ -68,26 +67,21 @@ for (var i = 0; i < 5; i++) {
 }
 
 
-
  
 
 });
 
 });
 
- $(document).on("click", ".things", function() {
- var pp = $("<p>");
- pp.append("Your Choice: ")
- $("#thinghere").append(pp);
+ $(document).on("click", ".list-group", function() {
+// var pp = $("<p>");
+// pp.append("Your Choice: ")
+// $("#thinghere").append(pp);
  $("#thinghere").append(this);
-
-
 
 
  $("#list").html("");
  $("#thing1").val("");
- // console.log(lat[$(this).attr("value")]);
- // console.log(lng[$(this).attr("value")]);
 console.log("The Latitude is:");
  console.log(lat[$(this).attr("value")]);
 myLats.push(lat[$(this).attr("value")]);
@@ -96,8 +90,6 @@ console.log("The Longitude is:");
 myLngs.push(lng[$(this).attr("value")]);
 console.log(myLats);
 console.log(myLngs);
-
-
 
  });
  // $(document).on("click", "#route", function() {

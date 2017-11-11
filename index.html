@@ -1,83 +1,150 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="utf-8">
-	<title>Task Master</title>
+	<title>Master Task</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/task-master.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Ubuntu:400,500" rel="stylesheet">
 </head>
 <body>
-<h1>To Do List:</h1>
-<style type="text/css">
-#right  {
-	text-align: right;
-	margin-right: 300px;
-}
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid" >
+	    <div class="navbar-header" id="header">
+        Task Master
+        <p id="slogan">We get shit pretty much done..</p>
+	      <a class="navbar-brand" href="#">
+	        <img id="logo" alt="Logo" src="assets/images/tm-logo.png">
+	      </a>
+	    </div>
+	  </div>
 
-</style>
-<div id="right">
-	<h2>My List:</h2>
-	<input type="submit" name="find" id="route" value="FIND ROUTE">
+	</nav>
+
+
+	<div class="container">
+    <div class="row">
+     <div class="col-lg-6">
+      <div class="panel panel-default" id="input-panel">
+      <div class="panel-heading" id="panel-heading">
+        <h3 class="panel-title">Let's Start Planning!</h3>
+      </div>
+
+      <div class="panel-body">
+          <form role="form">
+        	<div class="form-group">
+            <label for="name-input">Start Location:</label>
+            <div class="input-group">
+                <input type="text" class="form-control starts" id="starts" placeholder="Enter Address..">
+                <span class="input-group-btn">
+            
+                <div id="starthere"></div>
+                </span>
+            </div>
+        	</div>
+
+     	   <div class="form-group">
+              <label for="dest-input">End Location:</label>
+            <div class="input-group">
+                <input type="text" class="form-control ends" id="ends"placeholder="Enter Address..">
+                <span class="input-group-btn">
+                
+                </span> 
+            </div>
+          </form>
+
+
+		  </div>
+
+     	   <div class="form-group">
+              <label for="dest-input">Your Task:</label>
+            <div class="input-group">
+                <input type="text" class="form-control thing1" id="thing1" placeholder="Add a task..">
+                <span class="input-group-btn">
+                <button class="btn btn-default" id="sub3" type="button">Add</button>
+                </span>
+            </div>
+		    </div>
+
+		  </div>
+
+		  </div>
+           <div class="panel panel-default" id="input-panel">
+      <div class="panel-heading" id="panel-heading">
+        <h3 class="panel-title">Task List</h3>
+      </div>
+      <div class="panel-body">
+            <div id="thinghere"></div>
+</div>
+          </div>
+          </div>
+
+
+
+ 
+
+    <div class="row">
+    <div class="col-lg-6">
+        <div id="list" >
+      <!--     <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">List group item heading</h4>
+            <p class="list-group-item-text">Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem</p>
+          </a>
+        </div> -->
+
+<!--         <div class="list-group">
+          <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">List group item heading</h4>
+            <p class="list-group-item-text">Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem</p>
+          </a>
+        </div>
+
+        <div class="list-group">
+          <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">List group item heading</h4>
+            <p class="list-group-item-text">Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem</p>
+          </a>
+        </div>
+
+        <div class="list-group">
+          <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">List group item heading</h4>
+            <p class="list-group-item-text">Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem</p>
+          </a>
+        </div> -->
+    </div>
+    </div>
+  </form>
 </div>
 
-
-
-<div id="thinghere"></div>
-<style type="text/css">
   
-  #thinghere{
+      <!--   <div class="col-sm-6">
+        <div id="location-selections"></div>
+        <div id="map-input">
+		  <iframe width="550" height="410" src="assets/images/google-map.png">
+		  </iframe>
+		    </div>
+        </div>    -->
 
-    float: right;
-  }
-</style>
+        <!-- Single button -->
+        <div class="row">
+          <div class="col-xs-12 color">
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" id="route">Submit
+      </button>
+      
+    </div>
 
-<h3>Enter Your City</h3>
-<input type="text" name="starts" id="starts">
-<input type="submit" name="sub" id="sub1">
-<div id="starthere"></div>
-
-
-
-<!-- <h3>Ending Point</h3>
-<input type="text" name="ends" id="ends">
-<input type="submit" name="sub" id="sub2">
-<br> -->
-
-<h4>Things to do</h4>
-<input type="text" name="thing1" id="thing1">
-<input type="submit" name="sub" id="sub3">
-<br>
-<div id="list"></div>
-
-<style type="text/css">
-
-
-
- .things  {
-
-float: left;
-margin: 10px;
-border: 2px solid black;
-
-width: 400px;
-line-height: 20px;
-  }
-
-  p {
-
-  	margin-left: 5px;
-  	margin-bottom: 5px;
-  	margin-top: 5px;
-  }
-</style>
-
-
-  
 </div>
-
-
+<!-- <footer>Made by Really Awesome People &copy;</footer>
+ -->    
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="assets/javascript/proj.js"></script>
+<script type="text/javascript" src="assets/javascript/proj.js"></script>    
+
+
 </body>
 </html>
