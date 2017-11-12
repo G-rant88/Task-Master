@@ -84,9 +84,9 @@ iframe {
 }
 
 #route {
-	float: right;
 
 
+margin: auto 100px;
 
 }
 
@@ -109,11 +109,6 @@ footer {
 		margin-top: 10px;
 	}
 
-	.color {
-
-		margin-left: 20px;
-		margin-bottom: 10px;
-	}
 
 	#starts, #ends {
 
@@ -124,7 +119,7 @@ footer {
 
 		
 		width: 300px;
-		margin: 20px 100px;
+	
 	}
 
 	#map {
@@ -139,4 +134,22 @@ footer {
 
 	.navbar {
     margin-bottom: 40px;
+}
+
+.task {
+
+	height: 291.33px;
+	width: 555px;
+}
+
+.items {
+
+	height: 253px;
+	
+	overflow: auto;
+}
+
+.submitbutton {
+	margin-left: 15px;
+	margin-right: 15px;
 }
