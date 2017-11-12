@@ -1,9 +1,18 @@
 $(document).ready(function() {
 
 
+//Note: When route it grabs the location information of the first id 
+//need to figure out how to multi select and push location information one by one
+
+//For each to do added, display options to select business from list provided
+
+//once selected add the location information to waypoint array
+
 	var lat = [];
 	var lng = [];
 	var p = $("<p>");
+
+	var wayPointList = [];
 
 
 	//
@@ -76,6 +85,10 @@ $(document).ready(function() {
 		$("#list").html("");
 		$("#thing1").val("");
 
+		wayPointList.push($("#locationInfo").attr("location"));
+		console.log($("#locationInfo").attr("location"));
+		console.log(wayPointList);
+
 		console.log("The Latitude is:")
 		console.log(lat[$(this).attr("value")]);
 		console.log("The Longitude is:")
@@ -105,8 +118,8 @@ $(document).ready(function() {
         
         var waypts = [];
         var checkboxArray = $("#locationInfo").attr("location");
-        console.log(checkboxArray);
-        
+        console.log("location Info" + checkboxArray);
+
         // console.log(checkboxArray);
         // console.log(checkboxArray.options);
         
