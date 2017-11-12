@@ -2,6 +2,11 @@ body {
 	background-image: url('../images/bg.png');
 	background-size: cover;
 	font-family: 'Ubuntu', regular;
+	min-height: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
 }
 
 .container-fluid {
@@ -17,6 +22,12 @@ body {
 	max-width: 80px;
 	padding-left: 30px;
 	padding-bottom: 30px;
+}
+.navbar {
+	overflow: hidden;
+	min-width: 100%;
+	position: fixed;
+	top: 0;
 }
 
 #header {
@@ -34,11 +45,13 @@ body {
 }
 
 .container {
-/*	margin-top: 70px;*/
+  padding: 30px;
+  margin-top: 30px;
+  height: 1500px; 
 }
 
 #input-panel {
-	position: relative;
+	position: fixed;
 	border: 3px;
 	border-color: #C3C3C3;
 	box-shadow: 0 0 30px rgba(0,0,0,0.3);
