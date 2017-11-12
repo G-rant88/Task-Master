@@ -6,6 +6,11 @@ $(document).ready(function() {
 	var myLngs = [];
 	var p = $("<p>");
 
+	var wayPointList = [];
+	var listcount = 1;
+
+	var thislist =[] ;
+
 
 	$("#sub1").on("click", function(){
 
@@ -36,6 +41,7 @@ $(document).ready(function() {
 				var newDiv = $("<div>");
 				newDiv.addClass("list-group list-group-item active");
 				newDiv.attr("value", i)
+				newDiv.attr("location",call.response.venues[i].location.formattedAddress);
 
 				var p = $("<h4>");
 				var p2 = $("<p>");
@@ -46,8 +52,6 @@ $(document).ready(function() {
 				p.append("Name: " + call.response.venues[i].name);
 
 				p2.append("Location: " + call.response.venues[i].location.formattedAddress);
-				p2.attr("id","locationInfo");
-				p2.attr("location",call.response.venues[i].location.formattedAddress);
 				p2.addClass("list-group-item-text");
 
 				p3.addClass("list-group-item-text");
@@ -62,6 +66,8 @@ $(document).ready(function() {
 				 lat.push(lats);
 				 lng.push(lngs);
 
+				 console.log(lng, lat);
+
 				$("#list").append(newDiv);
 
 				}
@@ -74,43 +80,52 @@ $(document).ready(function() {
 	$(document).on("click", ".list-group", function() {
 
 		$("#thinghere").append(this);
-
-
+		
 		$("#list").html("");
 		$("#thing1").val("");
+		wayPointList.push($(this).attr("location"));
+		console.log(wayPointList);
+
+		$(this).addClass("selected");
 
 		myLats.push(lat[$(this).attr("value")]);
 		myLngs.push(lng[$(this).attr("value")]);
 
 		});
 
+	$("#route").on("click",function (){
+
+	initMap();
+	       
 	 function initMap() {
 
 	        var directionsService = new google.maps.DirectionsService;
 	        var directionsDisplay = new google.maps.DirectionsRenderer;
+	      
 	        var map = new google.maps.Map(document.getElementById('map'), {
 	          zoom: 6,
-	          center: {lat: 41.85, lng: -87.65}
+	          center: {lat: lat[0], lng: lng[0]}
 	        });
 	        directionsDisplay.setMap(map);
+	        calculateAndDisplayRoute(directionsService, directionsDisplay);
 
 
-	        $("#route").on("click",function (){
-	        	calculateAndDisplayRoute(directionsService, directionsDisplay);
-	        });
+	        
 	    }
 
 	    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 	        
 	        var waypts = [];
-	        var checkboxArray = $("#locationInfo").attr("location");
-	        console.log("location Info" + checkboxArray);
 
+	        for (var i=0;i <wayPointList.length;i++){
 
 	        waypts.push({
-	              location: checkboxArray,
+	              location: wayPointList[i],
 	              stopover: true
 	         });
+
+	        }
+
 
 	        directionsService.route({
 
@@ -127,6 +142,7 @@ $(document).ready(function() {
 	          if (status === 'OK') {
 
 	            directionsDisplay.setDirections(response);
+	           
 
 	            var route = response.routes[0];
 	            var summaryPanel = document.getElementById('directions-panel');
@@ -136,8 +152,10 @@ $(document).ready(function() {
 	          }
 	          
 	        });
+	        
 	     }
+	   });
+	   
 
-	     initMap();
 
 });
