@@ -57,6 +57,12 @@ body {
 	width: 100%
 }
 
+#map {
+    height: 700px;
+    float: left;
+    width: 600px;
+  }
+
 iframe {
 	border: none;
 }
