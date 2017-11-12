@@ -2,6 +2,12 @@ body {
 	background-image: url('../images/bg.png');
 	background-size: cover;
 	font-family: 'Ubuntu', regular;
+	min-height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
 }
 
 .container-fluid {
@@ -113,3 +119,24 @@ footer {
 
 		width: 219%;
 	}
+
+	#route {
+
+		
+		width: 300px;
+		margin: 20px 100px;
+	}
+
+	#map {
+
+		height: 450px;
+	}
+
+	.size {
+
+		box-sizing: border-box;
+	}
+
+	.navbar {
+    margin-bottom: 40px;
+}
