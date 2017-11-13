@@ -10,7 +10,7 @@ $(document).ready(function() {
 	var listcount = 1;
 
 	var thislist =[] ;
-
+	$("#direction-panel").hide();
 
 	$("#sub1").on("click", function(){
 
@@ -67,6 +67,7 @@ $(document).ready(function() {
 				 lng.push(lngs);
 
 				 console.log(lng, lat);
+				 console.log(url);
 
 				$("#list").append(newDiv);
 
@@ -95,6 +96,8 @@ $(document).ready(function() {
 		});
 
 	$("#route").on("click",function (){
+
+		$("#direction-panel").show();
 
 	initMap();
 	       
