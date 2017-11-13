@@ -40,14 +40,15 @@ $(document).ready(function() {
 					// console.log(call);
 				var newDiv = $("<div>");
 				newDiv.addClass("list-group list-group-item active");
-				newDiv.attr("value", i)
+				newDiv.attr("id", i);
 				newDiv.attr("location",call.response.venues[i].location.formattedAddress);
 
 				var p = $("<h4>");
 				var p2 = $("<p>");
 				var p3 = $("<p>");
-				 var pics = $("<img>");
-
+				 
+			 
+				
 
 
 				p.addClass("list-group-item-heading");
@@ -58,12 +59,10 @@ $(document).ready(function() {
 
 				p3.addClass("list-group-item-text");
 				p3.append("Category: " + call.response.venues[i].categories[0].name);
-				 pics.addClass("photo");
-				 pics.attr("src", call.response.venues[i].categories[0].icon.prefix + "150x150" + call.response.venues[i].categories[0].icon.suffix);
+				
 
 
-				newDiv.append(p, p2, p3, pics);
-
+				
 			 	lats = call.response.venues[i].location.lat;
 				lngs = call.response.venues[i].location.lng;
 
@@ -73,11 +72,54 @@ $(document).ready(function() {
 				 console.log(lng, lat);
 				 console.log(url);
 
-				$("#list").append(newDiv);
+				 newDiv.append(p, p2, p3)
+				 $("#list").append(newDiv);
 
-				}
 
-			});
+}
+for (var i = 0; i < 5; i++) {
+
+				var venid = call.response.venues[i].id
+				var url2 = "https://api.foursquare.com/v2/venues/"+ venid + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+
+					$.ajax({
+
+		url: url2,
+		method: "GET"
+
+		}).done(function (pictures){
+			
+
+			
+				
+			var pics = $("<img>");
+			 pics.attr("id", i);
+				 pics.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
+			
+				  pics.addClass("photo");
+			 
+
+			// newDiv.attr("value", i).append(pics.attr("val", i));
+			
+			
+		 // newDiv.append(pics);
+
+			$("#0").append(pics);
+	
+
+		});
+
+}
+
+	
+
+
+				
+
+
+	});
+
+		
 
 		});
 
