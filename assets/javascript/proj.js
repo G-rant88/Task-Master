@@ -91,20 +91,21 @@ for (var i = 0; i < 5; i++) {
 			
 
 			
-				
+				var newDiv2 = $("<div>");
+				newDiv2.attr("id", i);
 			var pics = $("<img>");
-			 pics.attr("id", i);
+			 
 				 pics.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
 			
 				  pics.addClass("photo");
-			 
+			 newDiv2.append(pics)
 
 			// newDiv.attr("value", i).append(pics.attr("val", i));
 			
 			
 		 // newDiv.append(pics);
 
-			$("#0").append(pics);
+			$("#0").append(newDiv2);
 	
 
 		});
