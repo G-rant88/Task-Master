@@ -40,7 +40,7 @@ body {
 }
 
 .container {
-/*	margin-top: 70px;*/
+	margin-top: 150px;
 }
 
 #input-panel {
@@ -63,11 +63,22 @@ body {
 	width: 100%
 }
 
+<<<<<<< HEAD
 /*#map {
     height: 700px;
     float: left;
     width: 600px;
   }*/
+=======
+}
+
+#map {
+    height:  685px;
+    float: left;
+    width: 600px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  }
+>>>>>>> aa286d2ba377fe284c284e628289aebcf81039cd
 
 iframe {
 	border: none;
@@ -105,7 +116,7 @@ footer {
   width: 100%;
 }
 
-	.list-group{
+	.list-group, .selected{
 
 		margin-top: 10px;
 	}

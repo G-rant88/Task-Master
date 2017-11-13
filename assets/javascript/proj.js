@@ -87,6 +87,7 @@ $(document).ready(function() {
 		console.log(wayPointList);
 
 		$(this).addClass("selected");
+		$(this).removeClass("list-group")
 
 		myLats.push(lat[$(this).attr("value")]);
 		myLngs.push(lng[$(this).attr("value")]);
@@ -146,6 +147,8 @@ $(document).ready(function() {
 
 	            var route = response.routes[0];
 	            var summaryPanel = document.getElementById('directions-panel');
+	            console.log(route.legs);
+	            console.log(route);
 
 	          } else {
 	            window.alert('Directions request failed due to ' + status);
@@ -155,6 +158,13 @@ $(document).ready(function() {
 	        
 	     }
 	   });
+
+	$(document).on("click",".selected", function(){
+		
+		wayPointList.pop($(this).attr("location"))
+		console.log(wayPointList);
+		$(this).remove();
+	});
 	   
 
 
