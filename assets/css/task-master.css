@@ -3,10 +3,11 @@ body {
 	background-size: cover;
 	font-family: 'Ubuntu', regular;
 	min-height: 100%;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center;
-	background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
 }
 
 .container-fluid {
@@ -22,12 +23,6 @@ body {
 	max-width: 80px;
 	padding-left: 30px;
 	padding-bottom: 30px;
-}
-.navbar {
-	overflow: hidden;
-	min-width: 100%;
-	position: fixed;
-	top: 0;
 }
 
 #header {
@@ -45,13 +40,11 @@ body {
 }
 
 .container {
-  padding: 30px;
-  margin-top: 30px;
-  height: 1500px; 
+	margin-top: 150px;
 }
 
 #input-panel {
-	position: fixed;
+	position: relative;
 	border: 3px;
 	border-color: #C3C3C3;
 	box-shadow: 0 0 30px rgba(0,0,0,0.3);
@@ -71,7 +64,7 @@ body {
 }
 
 #map {
-    height: 700px;
+    height:  685px;
     float: left;
     width: 600px;
   }
@@ -91,9 +84,10 @@ iframe {
 }
 
 #route {
-	float: right;
 
 
+margin: auto 100px;
+margin-left: 109px;
 
 }
 
@@ -116,13 +110,47 @@ footer {
 		margin-top: 10px;
 	}
 
-	.color {
-
-		margin-left: 20px;
-		margin-bottom: 10px;
-	}
 
 	#starts, #ends {
 
 		width: 219%;
 	}
+
+	#route {
+
+		
+		width: 300px;
+	
+	}
+
+	#map {
+
+		height: 450px;
+	}
+
+	.size {
+
+		box-sizing: border-box;
+	}
+
+	.navbar {
+    margin-bottom: 40px;
+}
+
+.task {
+
+	height: 291.33px;
+	width: 555px;
+}
+
+.items {
+
+	height: 253px;
+	
+	overflow: auto;
+}
+
+.submitbutton {
+	margin-left: 15px;
+	margin-right: 15px;
+}
