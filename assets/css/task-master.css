@@ -63,22 +63,13 @@ body {
 	width: 100%
 }
 
-<<<<<<< HEAD
-/*#map {
-    height: 700px;
-    float: left;
-    width: 600px;
-  }*/
-=======
-}
+
 
 #map {
-    height:  685px;
+    height:  520px;
     float: left;
     width: 553px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.3);
   }
->>>>>>> aa286d2ba377fe284c284e628289aebcf81039cd
 
 iframe {
 	border: none;
@@ -132,11 +123,6 @@ footer {
 		
 		width: 300px;
 	
-	}
-
-	#map {
-
-		height: 600px;
 	}
 
 	.size {
