@@ -46,6 +46,8 @@ $(document).ready(function() {
 				var p = $("<h4>");
 				var p2 = $("<p>");
 				var p3 = $("<p>");
+				 var pics = $("<img>");
+
 
 
 				p.addClass("list-group-item-heading");
@@ -56,9 +58,11 @@ $(document).ready(function() {
 
 				p3.addClass("list-group-item-text");
 				p3.append("Category: " + call.response.venues[i].categories[0].name);
-				 
+				 pics.addClass("photo");
+				 pics.attr("src", call.response.venues[i].categories[0].icon.prefix + "150x150" + call.response.venues[i].categories[0].icon.suffix);
 
-				newDiv.append(p, p2, p3);
+
+				newDiv.append(p, p2, p3, pics);
 
 			 	lats = call.response.venues[i].location.lat;
 				lngs = call.response.venues[i].location.lng;
