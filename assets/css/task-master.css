@@ -63,11 +63,11 @@ body {
 	width: 100%
 }
 
-#map {
+/*#map {
     height: 700px;
     float: left;
     width: 600px;
-  }
+  }*/
 
 iframe {
 	border: none;
@@ -125,7 +125,7 @@ footer {
 
 	#map {
 
-		height: 685px;
+		height: 600px;
 	}
 
 	.size {
