@@ -40,7 +40,7 @@ body {
 }
 
 .container {
-/*	margin-top: 70px;*/
+	margin-top: 150px;
 }
 
 #input-panel {
@@ -63,10 +63,13 @@ body {
 	width: 100%
 }
 
+}
+
 #map {
-    height: 700px;
+    height:  685px;
     float: left;
     width: 600px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
   }
 
 iframe {
