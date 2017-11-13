@@ -147,16 +147,39 @@ $(document).ready(function() {
 
 	            var route = response.routes[0];
 	            var summaryPanel = document.getElementById('directions-panel');
-	            console.log(route.legs);
-	            console.log(route);
+				var routes= route.legs;
+		
+
+	            console.log(response);
 
 	          } else {
 	            window.alert('Directions request failed due to ' + status);
 	          }
-	          
+			  
+			  var legs= response.routes[0].legs;
+
+			  console.log(legs);
+			  
+					   for (var i=0;i <legs.length;i++){
+						// console.log(legs[i].distance.text);
+						console.log(legs[i].duration.text);
+						
+						var duration = legs[i].duration.text;
+						var distance = legs[i].distance.text;
+
+						//create div
+						  var legsDiv = $("<div id='legs'>");
+						  var p = $("<p>").text(duration);
+						  var g = $("<p>").text(distance);
+						  legsDiv.append(p).append(g);
+						  $("#random").append(legsDiv);
+						  }
 	        });
 	        
-	     }
+		 }
+
+	
+
 	   });
 
 	$(document).on("click",".selected", function(){
