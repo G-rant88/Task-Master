@@ -68,7 +68,7 @@ body {
 #map {
     height:  685px;
     float: left;
-    width: 600px;
+    width: 553px;
     box-shadow: 0 0 30px rgba(0,0,0,0.3);
   }
 
@@ -93,7 +93,7 @@ margin: auto 100px;
 margin-left: 109px;
 
 }
-
+/*
 footer {
   padding: 10px 0;
   clear: both;
@@ -106,7 +106,7 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-}
+}*/
 
 	.list-group, .selected{
 
@@ -156,4 +156,9 @@ footer {
 .submitbutton {
 	margin-left: 15px;
 	margin-right: 15px;
+}
+
+#direction-panel {
+	height: 150px;
+	box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
