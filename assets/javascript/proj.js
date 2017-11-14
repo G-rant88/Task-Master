@@ -66,6 +66,8 @@ $(document).ready(function() {
 
 		}).done( function (call){
 
+			console.log(call.response);
+
 			for (var i = 0; i < 5; i++) {
 					// console.log(call);
 				var newDiv = $("<div>");
@@ -76,331 +78,99 @@ $(document).ready(function() {
 				var p = $("<h4>");
 				var p2 = $("<p>");
 				var p3 = $("<p>");
-				 
-			 
-				
 
+				var newDiv2 = $("<div>");
+				var venuePic = $("<img>");
+				var venueTip = $("<p>");
 
 				p.addClass("list-group-item-heading");
-				p.append("Name: " + call.response.venues[i].name);
-
-				p2.append("Location: " + call.response.venues[i].location.formattedAddress);
 				p2.addClass("list-group-item-text");
-
 				p3.addClass("list-group-item-text");
-				p3.append("Category: " + call.response.venues[i].categories[0].name);
+
+				
+				// p.append("Name: " + call.response.venues[i].name);
 				
 
+				// p2.append("Location: " + call.response.venues[i].location.formattedAddress);
+				var storeName = call.response.venues[i].name;
+				var storeLocation = call.response.venues[i].location.formattedAddress;
+				var storeCategory = call.response.venues[i].categories[0].name;
 
+				
+				// p3.append("Category: " + call.response.venues[i].categories[0].name);
+				
 				
 			 	lats = call.response.venues[i].location.lat;
 				lngs = call.response.venues[i].location.lng;
 
-				 lat.push(lats);
-				 lng.push(lngs);
+				p.append("Name: " + storeName);
+				p2.append("Location: " + storeLocation);
+				p3.append("Category: " + storeCategory);
+
+
+				lat.push(lats);
+				lng.push(lngs);
 
 				 // console.log(lng, lat);
 				 // console.log(url);
+				
 
-				 newDiv.append(p, p2, p3)
-				 $("#list").append(newDiv);
+				var venueId = call.response.venues[i].id
+				var venuePicUrl = "https://api.foursquare.com/v2/venues/"+ venueId + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+				var venueTipUrl = "https://api.foursquare.com/v2/venues/"+ venueId + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
 
+				console.log(venueId);
 
-}
+				$.ajax({
+
+					url: venuePicUrl,
+					method: "GET"
+
+				}).done(function(pictures){
+
+					venuePic.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix); 
+					console.log(venuePic);
+					console.log(pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
+
+					$.ajax({
+					url:venueTipUrl,
+					method:"GET"
+				
+						}).done(function(tips){
+
+							venueTip.append(tips.response.tips.items[0].text);
+							console.log(tips.response.tips.items[0].text);
+							console.log(venueTip);
+							
+							// $("#list").append(newDiv2);
+							// $("#list").prepend(newDiv);
+
+							p.append("Name: " + storeName);
+							p2.append("Location: " + storeLocation);
+							p3.append("Category: " + storeCategory);
+
+							// newDiv.append(p, p2, p3);
+							// newDiv2.append(venuePic, venueTip);
+							// $("#list").append(newDiv, newDiv2);
+							newDiv.append(p, p2, p3);
+							$("#list").append(newDiv);
+
+						});
+
+				});
+				
+				// newDiv.append(p, p2, p3);
+				// $("#list").append(newDiv);
+				
+
+			}
 			//pictures and reviews ajax calls begin
-			if ($(".list-group").attr("id") !== "choice"){
-		
-	
 
-				var venid0 = call.response.venues[0].id
-				var url2 = "https://api.foursquare.com/v2/venues/"+ venid0 + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
-
-					$.ajax({
-
-		url: url2,
-		method: "GET"
-
-		}).done(function (pictures){
-
-			if (pictures.response.photos.items[0] === undefined){
-
-				 pics0.attr("src", "assets/images/no-image.jpg");
-				 pics0.css("height", "100px");
-				 pics0.css("width", "100px");
-			}
 			
-				 pics0.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
-		
-	
-				// $("#0").append(pics);
-	
-
 		});
-
-		var venidt0 = call.response.venues[0].id
-				var urlt0 = "https://api.foursquare.com/v2/venues/"+ venidt0 + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
-
-					$.ajax({
-
-		url: urlt0,
-		method: "GET"
-
-		}).done(function (tips){
-			
-				 
-				 tips0.append(tips.response.tips.items[0].text)
-
-				divy0.append(pics0, tips0);
-			pics0.css("float", "left");
-				 pics0.css("margin-right", "8px");
-				 pics0.css("margin-top", "8px");
-				 pics0.css("border", "2px solid gray");
-				 tips0.css("padding-top", "15px");
-				 tips0.css("text-align", "justify");
-				 $("#0").css("overflow", "auto");
-
-
-
-				$("#0").append(divy0);
-	
-
-		});
-
-						var venid1 = call.response.venues[1].id
-				var url3 = "https://api.foursquare.com/v2/venues/"+ venid1 + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
-
-					$.ajax({
-
-		url: url3,
-		method: "GET"
-
-		}).done(function (pictures){
-
-			if (pictures.response.photos.items[0] === undefined){
-
-				 pics1.attr("src", "assets/images/no-image.jpg");
-				 pics1.css("height", "100px");
-				 pics1.css("width", "100px");
-			}
-			
-				 pics1.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
-	
-				// $("#1").append(pics1);
-	
-
-		});
-
-		var venidt1 = call.response.venues[1].id
-				var urlt1 = "https://api.foursquare.com/v2/venues/"+ venidt1 + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
-
-					$.ajax({
-
-		url: urlt1,
-		method: "GET"
-
-		}).done(function (tips){
-			
-				 
-				 tips1.append(tips.response.tips.items[0].text)
-
-				divy1.append(pics1, tips1);
-			pics1.css("float", "left");
-				 pics1.css("margin-right", "8px");
-				 pics1.css("margin-top", "8px");
-				 tips1.css("padding-top", "15px");
-				 tips1.css("text-align", "justify");
-				 pics1.css("border", "2px solid gray");
-				 $("#1").css("overflow", "auto");
-
-
-
-				$("#1").append(divy1);
-	
-
-		});
-
-
-
-
-
-							var venid2 = call.response.venues[2].id
-				var url4 = "https://api.foursquare.com/v2/venues/"+ venid2 + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
-
-					$.ajax({
-
-		url: url4,
-		method: "GET"
-
-		}).done(function (pictures){
-
-			if (pictures.response.photos.items[0] === undefined){
-
-				 pics2.attr("src", "assets/images/no-image.jpg");
-				 pics2.css("height", "100px");
-				 pics2.css("width", "100px");
-			}
-			
-				 pics2.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
-	
-				// $("#2").append(pics2);
-	
-
-		});
-
-
-var venidt2 = call.response.venues[2].id
-				var urlt2 = "https://api.foursquare.com/v2/venues/"+ venidt2 + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
-
-					$.ajax({
-
-		url: urlt2,
-		method: "GET"
-
-		}).done(function (tips){
-			
-				 
-				 tips2.append(tips.response.tips.items[0].text)
-
-				divy2.append(pics2, tips2);
-				 pics2.css("float", "left");
-				 pics2.css("margin-right", "8px");
-				 pics2.css("margin-top", "8px");
-				 tips2.css("padding-top", "15px");
-				 tips2.css("text-align", "justify");
-				 pics2.css("border", "2px solid gray");
-				 $("#2").css("overflow", "auto");
-
-
-
-				$("#2").append(divy2);
-	
-
-		});
-
-
-
-
-
-
-				var venid3 = call.response.venues[3].id
-				var url5 = "https://api.foursquare.com/v2/venues/"+ venid3 + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
-
-					$.ajax({
-
-		url: url5,
-		method: "GET"
-
-		}).done(function (pictures){
-
-			if (pictures.response.photos.items[0] === undefined){
-
-				 pics3.attr("src", "assets/images/no-image.jpg");
-				 pics3.css("height", "100px");
-				 pics3.css("width", "100px");
-			}
-			
-				 pics3.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
-	
-				// $("#3").append(pics3);
-	
-
-		});
-
-
-var venidt3 = call.response.venues[3].id
-				var urlt3 = "https://api.foursquare.com/v2/venues/"+ venidt3 + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
-
-					$.ajax({
-
-		url: urlt3,
-		method: "GET"
-
-		}).done(function (tips){
-			
-				 
-				 tips3.append(tips.response.tips.items[0].text)
-
-				divy3.append(pics3, tips3);
-				 pics3.css("float", "left");
-				 pics3.css("margin-right", "8px");
-				 pics3.css("margin-top", "8px");
-				 tips3.css("padding-top", "15px");
-				 tips3.css("text-align", "justify");
-				 pics3.css("border", "2px solid gray");
-				 $("#3").css("overflow", "auto");
-
-
-
-				$("#3").append(divy3);
-	
-
-		});
-
-
-
-
-				var venid4 = call.response.venues[4].id
-				var url6 = "https://api.foursquare.com/v2/venues/"+ venid4 + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
-
-					$.ajax({
-
-		url: url6,
-		method: "GET"
-
-		}).done(function (pictures){
-
-			if (pictures.response.photos.items[0] === undefined){
-
-				 pics4.attr("src", "assets/images/no-image.jpg");
-				 pics4.css("height", "100px");
-				 pics4.css("width", "100px");
-			}
-			
-				 pics4.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
-	
-				// $("#4").append(pics4);
-	
-
-		});
-
-
-var venidt4 = call.response.venues[4].id
-				var urlt4 = "https://api.foursquare.com/v2/venues/"+ venidt4 + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
-
-					$.ajax({
-
-		url: urlt4,
-		method: "GET"
-
-		}).done(function (tips){
-			
-				 
-				 tips4.append(tips.response.tips.items[0].text)
-
-				divy4.append(pics4, tips4);
-				 pics4.css("float", "left");
-				 pics4.css("margin-right", "8px");
-				 pics4.css("margin-top", "8px");
-				 tips4.css("padding-top", "15px");
-				 tips4.css("text-align", "justify");
-				 pics4.css("border", "2px solid gray");
-				 $("#4").css("overflow", "auto");
-
-
-
-				$("#4").append(divy4);
-	
-
-		});
-
-		//pictures and reviews ajax calls end
-}
 
 	});
 
-		
-
-		});
 
 
 	$(document).on("click", ".list-group", function() {
