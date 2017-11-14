@@ -40,7 +40,7 @@ $(document).ready(function() {
 					// console.log(call);
 				var newDiv = $("<div>");
 				newDiv.addClass("list-group list-group-item active");
-				newDiv.attr("id", i);
+				newDiv.attr("value", i);
 				newDiv.attr("location",call.response.venues[i].location.formattedAddress);
 
 				var p = $("<h4>");
@@ -77,6 +77,7 @@ $(document).ready(function() {
 
 
 }
+
 for (var i = 0; i < 5; i++) {
 
 				var venid = call.response.venues[i].id
@@ -90,27 +91,29 @@ for (var i = 0; i < 5; i++) {
 		}).done(function (pictures){
 			
 
-			
-				var newDiv2 = $("<div>");
-				newDiv2.attr("id", i);
+// 			var newDiv2 = $("<div>");
+// newDiv2.attr("value", i);
+				
 			var pics = $("<img>");
+			 pics.attr("value", i);
 			 
 				 pics.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
 			
 				  pics.addClass("photo");
-			 newDiv2.append(pics)
+		
 
 			// newDiv.attr("value", i).append(pics.attr("val", i));
 			
-			
-		 // newDiv.append(pics);
+			// newDiv2.append(pics)
+		 newDiv.val(i).append(pics.val(i));
 
-			$("#0").append(newDiv2);
+			
+			
 	
 
 		});
 
-}
+};
 
 	
 
