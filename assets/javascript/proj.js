@@ -57,7 +57,7 @@ $(document).ready(function() {
 		var query = $("#thing1").val().trim();
 		var location = $("#starts").val().trim();
 		
-		var url = "https://api.foursquare.com/v2/venues/search?&query=" + query + "&mode=url&limit=5&near=" + location + "%2C%20CA%2C%20United%20States&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+		var url = "https://api.foursquare.com/v2/venues/search?&query=" + query + "&mode=url&limit=10&near=" + location + "%2C%20CA%2C%20United%20States&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
 
 		$.ajax({
 
@@ -66,25 +66,36 @@ $(document).ready(function() {
 
 		}).done( function (call){
 
-			for (var i = 0; i < 5; i++) {
+			for (var i = 0; i < 10; i++) {
 					// console.log(call);
 				var newDiv = $("<div>");
+
+				newDiv.attr("undef", call.response.venues[i].location.address);
+				console.log(newDiv.attr("undef"));
+			if (newDiv.attr("undef") === undefined){
+
+i++;
+
+
+ }				newDiv.attr("undef", call.response.venues[i].location.address);
 				newDiv.addClass("list-group list-group-item active");
 				newDiv.attr("id", i);
-				newDiv.attr("location",call.response.venues[i].location.formattedAddress);
+				newDiv.attr("location", call.response.venues[i].location.address + ", " + call.response.venues[i].location.city);
+				
 
 				var p = $("<h4>");
 				var p2 = $("<p>");
 				var p3 = $("<p>");
 				 
 			 
-				
+
+	
 
 
 				p.addClass("list-group-item-heading");
 				p.append("Name: " + call.response.venues[i].name);
 
-				p2.append("Location: " + call.response.venues[i].location.formattedAddress);
+				p2.append("Location: " + call.response.venues[i].location.address + ", " + call.response.venues[i].location.city);
 				p2.addClass("list-group-item-text");
 
 				p3.addClass("list-group-item-text");
@@ -104,6 +115,8 @@ $(document).ready(function() {
 
 				 newDiv.append(p, p2, p3)
 				 $("#list").append(newDiv);
+
+
 
 
 }
@@ -396,24 +409,34 @@ var venidt4 = call.response.venues[4].id
 		//pictures and reviews ajax calls end
 }
 
+
+
 	});
 
-		
 
 		});
 
 
 	$(document).on("click", ".list-group", function() {
 
-		
 
-		$("#thinghere").append(this);
+
+		// console.log(newDiv.attr("undef"));
+
+// 	if ($(this).attr("undef") === undefined){
+
+// 	alert("No address, cannot get directions");
+// 	return false;
+// }
+	
+
+
+		console.log(wayPointList);
+		wayPointList.push($(this).attr("location"));
+	$("#thinghere").append(this);
 		$(this).attr("id", "choice");
 		$("#list").html("");
 		$("#thing1").val("");
-		wayPointList.push($(this).attr("location"));
-		console.log(wayPointList);
-
 		$(this).addClass("selected");
 		$(this).removeClass("list-group")
 
