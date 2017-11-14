@@ -30,13 +30,6 @@ $(document).ready(function() {
 	var thislist =[] ;
 	$("#direction-panel").hide();
 
-	$("#sub1").on("click", function(){
-
-		var location = $("#starts").val().trim();
-		$("#starthere").html("Searching Near: " + location);
-
-	});
-
 	$("#sub3").on("click", function(){
 
 		
@@ -72,16 +65,15 @@ $(document).ready(function() {
 
 				newDiv.attr("undef", call.response.venues[i].location.address);
 				console.log(newDiv.attr("undef"));
-			if (newDiv.attr("undef") === undefined){
-
-i++;
-
-
- }				newDiv.attr("undef", call.response.venues[i].location.address);
+// 			if (newDiv.attr("undef") === undefined){
+// i++;
+//  }				newDiv.attr("undef", call.response.venues[i].location.address);
 				newDiv.addClass("list-group list-group-item active");
 				newDiv.attr("id", i);
 				newDiv.attr("location", call.response.venues[i].location.address + ", " + call.response.venues[i].location.city);
-				
+				newDiv.attr("value", i)
+				newDiv.attr("location", call.response.venues[i].location.address + ", " + call.response.venues[i].location.city);
+
 
 				var p = $("<h4>");
 				var p2 = $("<p>");
