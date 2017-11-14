@@ -12,13 +12,6 @@ $(document).ready(function() {
 	var thislist =[] ;
 	$("#direction-panel").hide();
 
-	$("#sub1").on("click", function(){
-
-		var location = $("#starts").val().trim();
-		$("#starthere").html("Searching Near: " + location);
-
-	});
-
 	$("#sub3").on("click", function(){
 		 
 		lat = [];
