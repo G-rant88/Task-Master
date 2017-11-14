@@ -424,6 +424,7 @@ var venidt4 = call.response.venues[4].id
 
 	$("#route").on("click",function (){
 
+		$("#directionHere").empty();
 		$("#direction-panel").show();
 
 	initMap();
@@ -508,7 +509,11 @@ var venidt4 = call.response.venues[4].id
 	            		var p1 = $("<h5>");
 	            		// var span = $("<span>")
 
-	            		totalDistance = (Math.ceil((totalDistance/0.621371)/1000)) + "mi";
+	            		console.log(totalDistance);
+
+	            		var x = ((totalDistance*0.621371)/1000).toFixed(1)
+
+	            		totalDistance = Math.round(x*100)/100 + "mi";
 	            		totalTime = (Math.ceil(totalTime/60)+"mins")
 
 	            		p1.append("Total Distance: "+totalDistance+"  "+ "Total Time: " +totalTime);
@@ -516,7 +521,6 @@ var venidt4 = call.response.venues[4].id
 	            		$("#directionHere").prepend(newDiv);
 	            	};
 	            };
-
 
 	          } else {
 	            window.alert('Directions request failed due to ' + status);
