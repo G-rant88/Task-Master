@@ -69,8 +69,8 @@ $(document).ready(function() {
 				 lat.push(lats);
 				 lng.push(lngs);
 
-				 console.log(lng, lat);
-				 console.log(url);
+				 // console.log(lng, lat);
+				 // console.log(url);
 
 				 newDiv.append(p, p2, p3)
 				 $("#list").append(newDiv);
@@ -202,6 +202,44 @@ for (var i = 0; i < 5; i++) {
 	            var summaryPanel = document.getElementById('directions-panel');
 	            console.log(route.legs);
 	            console.log(route);
+	            
+	            var totalDistance  = 0;
+	            var totalTime = 0;
+
+	            var legs = route.legs;
+
+	            for(var i = 0; i < legs.length; i++){
+	            	totalDistance += legs[i].distance.value;
+	            	totalTime +=legs[i].duration.value;
+	            	console.log(totalDistance+"km");
+	            	console.log(totalTime);
+
+	            	var newDiv = $("<div>");
+	            	var p1 = $("<p>");
+	            	// var p2 = $("<p>");
+
+	            	p1.append("Trip "+ (i+1) +": "+legs[i].distance.text +" "+legs[i].duration.text);
+
+	            	newDiv.append(p1);
+	            	newDiv.addClass("trips");
+
+	            	$("#directionHere").append(newDiv);
+
+	            	if(i === (legs.length - 1)){
+						
+						var newDiv = $("<div>");
+	            		var p1 = $("<h5>");
+	            		// var span = $("<span>")
+
+	            		totalDistance = (Math.ceil((totalDistance/0.621371)/1000)) + "mi";
+	            		totalTime = (Math.ceil(totalTime/60)+"mins")
+
+	            		p1.append("Total Distance: "+totalDistance+"  "+ "Total Time: " +totalTime);
+	            		newDiv.append(p1);
+	            		$("#directionHere").prepend(newDiv);
+	            	};
+	            };
+
 
 	          } else {
 	            window.alert('Directions request failed due to ' + status);
