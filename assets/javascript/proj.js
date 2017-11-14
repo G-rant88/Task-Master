@@ -5,6 +5,24 @@ $(document).ready(function() {
 	var myLats = [];
 	var myLngs = [];
 	var p = $("<p>");
+	var pics = $("<img>");
+	var pics1 = $("<img>");
+	var pics2 = $("<img>");
+	var pics3 = $("<img>");
+	var pics4 = $("<img>");
+	var tips0 = $("<p>");
+	var tips1 = $("<p>");
+	var tips2 = $("<p>");
+	var tips3 = $("<p>");
+	var tips4 = $("<p>");
+	var divy0 = $("<div>");
+	var divy1 = $("<div>");
+	var divy2 = $("<div>");
+	var divy3 = $("<div>");
+	var divy4 = $("<div>");
+	
+
+
 
 	var wayPointList = [];
 	var listcount = 1;
@@ -20,7 +38,19 @@ $(document).ready(function() {
 	});
 
 	$("#sub3").on("click", function(){
-		 
+
+		
+		tips0.empty();
+		tips1.empty();
+		tips2.empty();
+		tips3.empty();
+		tips4.empty();
+		pics.empty();
+		pics1.empty();
+		pics2.empty();
+		pics3.empty();
+		pics4.empty();
+		
 		lat = [];
 	 	lng = [];
 
@@ -40,7 +70,7 @@ $(document).ready(function() {
 					// console.log(call);
 				var newDiv = $("<div>");
 				newDiv.addClass("list-group list-group-item active");
-				newDiv.attr("value", i);
+				newDiv.attr("id", i);
 				newDiv.attr("location",call.response.venues[i].location.formattedAddress);
 
 				var p = $("<h4>");
@@ -77,11 +107,13 @@ $(document).ready(function() {
 
 
 }
+			//pictures and reviews ajax calls begin
+			if ($(".list-group").attr("id") !== "choice"){
+		
+	
 
-for (var i = 0; i < 5; i++) {
-
-				var venid = call.response.venues[i].id
-				var url2 = "https://api.foursquare.com/v2/venues/"+ venid + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+				var venid0 = call.response.venues[0].id
+				var url2 = "https://api.foursquare.com/v2/venues/"+ venid0 + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
 
 					$.ajax({
 
@@ -90,36 +122,244 @@ for (var i = 0; i < 5; i++) {
 
 		}).done(function (pictures){
 			
-
-// 			var newDiv2 = $("<div>");
-// newDiv2.attr("value", i);
-				
-			var pics = $("<img>");
-			 pics.attr("value", i);
-			 
 				 pics.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
-			
-				  pics.addClass("photo");
 		
-
-			// newDiv.attr("value", i).append(pics.attr("val", i));
-			
-			// newDiv2.append(pics)
-		 newDiv.val(i).append(pics.val(i));
-
-			
-			
+	
+				// $("#0").append(pics);
 	
 
 		});
 
-};
+		var venidt0 = call.response.venues[0].id
+				var urlt0 = "https://api.foursquare.com/v2/venues/"+ venidt0 + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
 
+					$.ajax({
+
+		url: urlt0,
+		method: "GET"
+
+		}).done(function (tips){
+			
+				 
+				 tips0.append(tips.response.tips.items[0].text)
+
+				divy0.append(pics, tips0);
+			pics.css("float", "left");
+				 pics.css("margin-right", "8px");
+				 pics.css("margin-top", "8px");
+				 pics.css("border", "2px solid gray");
+				 tips0.css("padding-top", "15px");
+				 tips0.css("text-align", "justify");
+				 $("#0").css("overflow", "auto");
+
+
+
+				$("#0").append(divy0);
 	
 
+		});
 
-				
+						var venid1 = call.response.venues[1].id
+				var url3 = "https://api.foursquare.com/v2/venues/"+ venid1 + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
 
+					$.ajax({
+
+		url: url3,
+		method: "GET"
+
+		}).done(function (pictures){
+			
+				 pics1.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
+	
+				// $("#1").append(pics1);
+	
+
+		});
+
+		var venidt1 = call.response.venues[1].id
+				var urlt1 = "https://api.foursquare.com/v2/venues/"+ venidt1 + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+
+					$.ajax({
+
+		url: urlt1,
+		method: "GET"
+
+		}).done(function (tips){
+			
+				 
+				 tips1.append(tips.response.tips.items[0].text)
+
+				divy1.append(pics1, tips1);
+			pics1.css("float", "left");
+				 pics1.css("margin-right", "8px");
+				 pics1.css("margin-top", "8px");
+				 tips1.css("padding-top", "15px");
+				 tips1.css("text-align", "justify");
+				 pics1.css("border", "2px solid gray");
+				 $("#1").css("overflow", "auto");
+
+
+
+				$("#1").append(divy1);
+	
+
+		});
+
+
+
+
+
+							var venid2 = call.response.venues[2].id
+				var url4 = "https://api.foursquare.com/v2/venues/"+ venid2 + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+
+					$.ajax({
+
+		url: url4,
+		method: "GET"
+
+		}).done(function (pictures){
+			
+				 pics2.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
+	
+				// $("#2").append(pics2);
+	
+
+		});
+
+
+var venidt2 = call.response.venues[2].id
+				var urlt2 = "https://api.foursquare.com/v2/venues/"+ venidt2 + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+
+					$.ajax({
+
+		url: urlt2,
+		method: "GET"
+
+		}).done(function (tips){
+			
+				 
+				 tips2.append(tips.response.tips.items[0].text)
+
+				divy2.append(pics2, tips2);
+				 pics2.css("float", "left");
+				 pics2.css("margin-right", "8px");
+				 pics2.css("margin-top", "8px");
+				 tips2.css("padding-top", "15px");
+				 tips2.css("text-align", "justify");
+				 pics2.css("border", "2px solid gray");
+				 $("#2").css("overflow", "auto");
+
+
+
+				$("#2").append(divy2);
+	
+
+		});
+
+
+
+
+
+
+				var venid3 = call.response.venues[3].id
+				var url5 = "https://api.foursquare.com/v2/venues/"+ venid3 + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+
+					$.ajax({
+
+		url: url5,
+		method: "GET"
+
+		}).done(function (pictures){
+			
+				 pics3.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
+	
+				// $("#3").append(pics3);
+	
+
+		});
+
+
+var venidt3 = call.response.venues[3].id
+				var urlt3 = "https://api.foursquare.com/v2/venues/"+ venidt3 + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+
+					$.ajax({
+
+		url: urlt3,
+		method: "GET"
+
+		}).done(function (tips){
+			
+				 
+				 tips3.append(tips.response.tips.items[0].text)
+
+				divy3.append(pics3, tips3);
+				 pics3.css("float", "left");
+				 pics3.css("margin-right", "8px");
+				 pics3.css("margin-top", "8px");
+				 tips3.css("padding-top", "15px");
+				 tips3.css("text-align", "justify");
+				 pics3.css("border", "2px solid gray");
+				 $("#3").css("overflow", "auto");
+
+
+
+				$("#3").append(divy3);
+	
+
+		});
+
+
+
+
+				var venid4 = call.response.venues[4].id
+				var url6 = "https://api.foursquare.com/v2/venues/"+ venid4 + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+
+					$.ajax({
+
+		url: url6,
+		method: "GET"
+
+		}).done(function (pictures){
+			
+				 pics4.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
+	
+				// $("#4").append(pics4);
+	
+
+		});
+
+
+var venidt4 = call.response.venues[4].id
+				var urlt4 = "https://api.foursquare.com/v2/venues/"+ venidt4 + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+
+					$.ajax({
+
+		url: urlt4,
+		method: "GET"
+
+		}).done(function (tips){
+			
+				 
+				 tips4.append(tips.response.tips.items[0].text)
+
+				divy4.append(pics4, tips4);
+				 pics4.css("float", "left");
+				 pics4.css("margin-right", "8px");
+				 pics4.css("margin-top", "8px");
+				 tips4.css("padding-top", "15px");
+				 tips4.css("text-align", "justify");
+				 pics4.css("border", "2px solid gray");
+				 $("#4").css("overflow", "auto");
+
+
+
+				$("#4").append(divy4);
+	
+
+		});
+
+		//pictures and reviews ajax calls end
+}
 
 	});
 
@@ -130,8 +370,10 @@ for (var i = 0; i < 5; i++) {
 
 	$(document).on("click", ".list-group", function() {
 
-		$("#thinghere").append(this);
 		
+
+		$("#thinghere").append(this);
+		$(this).attr("id", "choice");
 		$("#list").html("");
 		$("#thing1").val("");
 		wayPointList.push($(this).attr("location"));
