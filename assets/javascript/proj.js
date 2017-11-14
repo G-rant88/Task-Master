@@ -59,7 +59,7 @@ $(document).ready(function() {
 
 		}).done( function (call){
 
-			for (var i = 0; i < 10; i++) {
+			for (var i = 0; i < 5; i++) {
 					// console.log(call);
 				var newDiv = $("<div>");
 
