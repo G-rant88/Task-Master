@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var myLats = [];
 	var myLngs = [];
 	var p = $("<p>");
-	var pics = $("<img>");
+	var pics0 = $("<img>");
 	var pics1 = $("<img>");
 	var pics2 = $("<img>");
 	var pics3 = $("<img>");
@@ -45,7 +45,7 @@ $(document).ready(function() {
 		tips2.empty();
 		tips3.empty();
 		tips4.empty();
-		pics.empty();
+		pics0.empty();
 		pics1.empty();
 		pics2.empty();
 		pics3.empty();
@@ -121,8 +121,15 @@ $(document).ready(function() {
 		method: "GET"
 
 		}).done(function (pictures){
+
+			if (pictures.response.photos.items[0] === undefined){
+
+				 pics0.attr("src", "assets/images/no-image.jpg");
+				 pics0.css("height", "100px");
+				 pics0.css("width", "100px");
+			}
 			
-				 pics.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
+				 pics0.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
 		
 	
 				// $("#0").append(pics);
@@ -143,11 +150,11 @@ $(document).ready(function() {
 				 
 				 tips0.append(tips.response.tips.items[0].text)
 
-				divy0.append(pics, tips0);
-			pics.css("float", "left");
-				 pics.css("margin-right", "8px");
-				 pics.css("margin-top", "8px");
-				 pics.css("border", "2px solid gray");
+				divy0.append(pics0, tips0);
+			pics0.css("float", "left");
+				 pics0.css("margin-right", "8px");
+				 pics0.css("margin-top", "8px");
+				 pics0.css("border", "2px solid gray");
 				 tips0.css("padding-top", "15px");
 				 tips0.css("text-align", "justify");
 				 $("#0").css("overflow", "auto");
@@ -168,6 +175,13 @@ $(document).ready(function() {
 		method: "GET"
 
 		}).done(function (pictures){
+
+			if (pictures.response.photos.items[0] === undefined){
+
+				 pics1.attr("src", "assets/images/no-image.jpg");
+				 pics1.css("height", "100px");
+				 pics1.css("width", "100px");
+			}
 			
 				 pics1.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
 	
@@ -218,6 +232,13 @@ $(document).ready(function() {
 		method: "GET"
 
 		}).done(function (pictures){
+
+			if (pictures.response.photos.items[0] === undefined){
+
+				 pics2.attr("src", "assets/images/no-image.jpg");
+				 pics2.css("height", "100px");
+				 pics2.css("width", "100px");
+			}
 			
 				 pics2.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
 	
@@ -270,6 +291,13 @@ var venidt2 = call.response.venues[2].id
 		method: "GET"
 
 		}).done(function (pictures){
+
+			if (pictures.response.photos.items[0] === undefined){
+
+				 pics3.attr("src", "assets/images/no-image.jpg");
+				 pics3.css("height", "100px");
+				 pics3.css("width", "100px");
+			}
 			
 				 pics3.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
 	
@@ -320,6 +348,13 @@ var venidt3 = call.response.venues[3].id
 		method: "GET"
 
 		}).done(function (pictures){
+
+			if (pictures.response.photos.items[0] === undefined){
+
+				 pics4.attr("src", "assets/images/no-image.jpg");
+				 pics4.css("height", "100px");
+				 pics4.css("width", "100px");
+			}
 			
 				 pics4.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
 	
