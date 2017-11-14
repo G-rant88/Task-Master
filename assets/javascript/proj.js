@@ -34,7 +34,7 @@ $(document).ready(function() {
 				var newDiv = $("<div>");
 				newDiv.addClass("list-group list-group-item active");
 				newDiv.attr("value", i)
-				newDiv.attr("location",call.response.venues[i].location.formattedAddress);
+				newDiv.attr("location", call.response.venues[i].location.address + ", " + call.response.venues[i].location.city);
 
 				var p = $("<h4>");
 				var p2 = $("<p>");
@@ -44,7 +44,7 @@ $(document).ready(function() {
 				p.addClass("list-group-item-heading");
 				p.append("Name: " + call.response.venues[i].name);
 
-				p2.append("Location: " + call.response.venues[i].location.formattedAddress);
+				p2.append("Location: " + call.response.venues[i].location.address + ", " + call.response.venues[i].location.city);
 				p2.addClass("list-group-item-text");
 
 				p3.addClass("list-group-item-text");
