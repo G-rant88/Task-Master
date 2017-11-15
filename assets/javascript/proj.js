@@ -5,24 +5,6 @@ $(document).ready(function() {
 	var myLats = [];
 	var myLngs = [];
 	var p = $("<p>");
-	var pics0 = $("<img>");
-	var pics1 = $("<img>");
-	var pics2 = $("<img>");
-	var pics3 = $("<img>");
-	var pics4 = $("<img>");
-	var tips0 = $("<p>");
-	var tips1 = $("<p>");
-	var tips2 = $("<p>");
-	var tips3 = $("<p>");
-	var tips4 = $("<p>");
-	var divy0 = $("<div>");
-	var divy1 = $("<div>");
-	var divy2 = $("<div>");
-	var divy3 = $("<div>");
-	var divy4 = $("<div>");
-	
-
-
 
 	var wayPointList = [];
 	var listcount = 1;
@@ -40,19 +22,9 @@ $(document).ready(function() {
 	$("#sub3").on("click", function(){
 
 		
-		tips0.empty();
-		tips1.empty();
-		tips2.empty();
-		tips3.empty();
-		tips4.empty();
-		pics0.empty();
-		pics1.empty();
-		pics2.empty();
-		pics3.empty();
-		pics4.empty();
-		
 		lat = [];
 	 	lng = [];
+
 
 		var query = $("#thing1").val().trim();
 		var location = $("#starts").val().trim();
@@ -70,50 +42,38 @@ $(document).ready(function() {
 
 			for (var i = 0; i < 5; i++) {
 					// console.log(call);
-				var newDiv = $("<div>");
-				newDiv.addClass("list-group list-group-item active");
-				newDiv.attr("id", i);
-				newDiv.attr("location",call.response.venues[i].location.formattedAddress);
 
-				var p = $("<h4>");
-				var p2 = $("<p>");
-				var p3 = $("<p>");
-
-				var newDiv2 = $("<div>");
-				var venuePic = $("<img>");
-				var venueTip = $("<p>");
-
-				p.addClass("list-group-item-heading");
-				p2.addClass("list-group-item-text");
-				p3.addClass("list-group-item-text");
-
-				
-				// p.append("Name: " + call.response.venues[i].name);
-				
-
-				// p2.append("Location: " + call.response.venues[i].location.formattedAddress);
 				var storeName = call.response.venues[i].name;
 				var storeLocation = call.response.venues[i].location.formattedAddress;
 				var storeCategory = call.response.venues[i].categories[0].name;
 
-				
-				// p3.append("Category: " + call.response.venues[i].categories[0].name);
-				
+				// ///////
+				// var newDiv = $("<div>");
+				// newDiv.addClass("list-group list-group-item active");
+				// newDiv.attr("id", i);
+				// newDiv.attr("location",storeLocation);
+				// var p = $("<h4>");
+				// var p2 = $("<p>");
+				// var p3 = $("<p>");
+				// var newDiv2 = $("<div>");
+				// var venuePic = $("<img>");
+				// var venueTip = $("<p>");
+				// p.addClass("list-group-item-heading");
+				// p2.addClass("list-group-item-text");
+				// p3.addClass("list-group-item-text");
+				// p.append("Name: " + storeName);
+				// p2.append("Location: " + storeLocation);
+				// p3.append("Category: " + storeCategory);
+				// ////////
 				
 			 	lats = call.response.venues[i].location.lat;
 				lngs = call.response.venues[i].location.lng;
-
-				p.append("Name: " + storeName);
-				p2.append("Location: " + storeLocation);
-				p3.append("Category: " + storeCategory);
-
 
 				lat.push(lats);
 				lng.push(lngs);
 
 				 // console.log(lng, lat);
 				 // console.log(url);
-				
 
 				var venueId = call.response.venues[i].id
 				var venuePicUrl = "https://api.foursquare.com/v2/venues/"+ venueId + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
@@ -128,9 +88,11 @@ $(document).ready(function() {
 
 				}).done(function(pictures){
 
-					venuePic.attr("src", pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix); 
-					console.log(venuePic);
-					console.log(pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
+					var pictureDisplay = pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix;
+
+					 
+					// console.log(venuePic);
+					// console.log(pictures.response.photos.items[0].prefix + "100x100" + pictures.response.photos.items[0].suffix);
 
 					$.ajax({
 					url:venueTipUrl,
@@ -138,21 +100,46 @@ $(document).ready(function() {
 				
 						}).done(function(tips){
 
+							var newDiv = $("<div>");
+							var p = $("<h4>");
+							var p2 = $("<p>");
+							var p3 = $("<p>");
+							var newDiv2 = $("<div>");
+							var venuePic = $("<img>");
+							var venueTip = $("<p>");
+
+							newDiv.addClass("list-group list-group-item active");
+							newDiv.attr("id", i);
+							newDiv.attr("location",storeLocation);
+							
+
+							p.addClass("list-group-item-heading");
+							p.append("Name: " + storeName);
+
+							p2.addClass("list-group-item-text");
+							p2.append("Location: " + storeLocation);
+							
+							p3.addClass("list-group-item-text");
+							p3.append("Category: " + storeCategory);
+
+							venuePic.attr("src", pictureDisplay );
 							venueTip.append(tips.response.tips.items[0].text);
+
 							console.log(tips.response.tips.items[0].text);
 							console.log(venueTip);
 							
 							// $("#list").append(newDiv2);
 							// $("#list").prepend(newDiv);
 
-							p.append("Name: " + storeName);
-							p2.append("Location: " + storeLocation);
-							p3.append("Category: " + storeCategory);
+							// p.append("Name: " + storeName);
+							// p2.append("Location: " + storeLocation);
+							// p3.append("Category: " + storeCategory);
 
 							// newDiv.append(p, p2, p3);
 							// newDiv2.append(venuePic, venueTip);
 							// $("#list").append(newDiv, newDiv2);
-							newDiv.append(p, p2, p3);
+							newDiv.append(p, p2, p3,venuePic, venueTip);
+						
 							$("#list").append(newDiv);
 
 						});
