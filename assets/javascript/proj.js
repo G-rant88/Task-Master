@@ -12,13 +12,6 @@ $(document).ready(function() {
 	var thislist =[] ;
 	$("#direction-panel").hide();
 
-	$("#sub1").on("click", function(){
-
-		var location = $("#starts").val().trim();
-		$("#starthere").html("Searching Near: " + location);
-
-	});
-
 	$("#sub3").on("click", function(){
 
 		
@@ -29,7 +22,7 @@ $(document).ready(function() {
 		var query = $("#thing1").val().trim();
 		var location = $("#starts").val().trim();
 		
-		var url = "https://api.foursquare.com/v2/venues/search?&query=" + query + "&mode=url&limit=5&near=" + location + "%2C%20CA%2C%20United%20States&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+		var url = "https://api.foursquare.com/v2/venues/search?&query=" + query + "&mode=url&limit=7&near=" + location + "%2C%20CA%2C%20United%20States&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
 
 		$.ajax({
 
@@ -38,13 +31,30 @@ $(document).ready(function() {
 
 		}).done( function (call){
 
-			console.log(call.response);
 
-			for (var i = 0; i < 5; i++) {
-					// console.log(call);
+			for (var i = 0; i < 7; i++) {
+				
+				var newDiv = $("<div>");
+				newDiv.attr("undef", call.response.venues[i].location.address);
+				newDiv.attr("undef2", call.response.venues[i].name);
+				newDiv.attr("undef3", call.response.venues[i].categories[0]);
+				
+
+				if (newDiv.attr("undef") === undefined || newDiv.attr("undef2") === undefined
+					|| newDiv.attr("undef3") === undefined){
+
+					i++;
+				}
+
+
+				// newDiv.addClass("list-group list-group-item active");
+				// newDiv.attr("value", i)
+				// newDiv.attr("location", call.response.venues[i].location.address + ", " + call.response.venues[i].location.city);
+				
+
 
 				var storeName = call.response.venues[i].name;
-				var storeLocation = call.response.venues[i].location.formattedAddress;
+				var storeLocation = call.response.venues[i].location.address + ", " + call.response.venues[i].location.city
 				var storeCategory = call.response.venues[i].categories[0].name;
 
 				// ///////
@@ -75,9 +85,12 @@ $(document).ready(function() {
 				 // console.log(lng, lat);
 				 // console.log(url);
 
+
 				var venueId = call.response.venues[i].id
 				var venuePicUrl = "https://api.foursquare.com/v2/venues/"+ venueId + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
 				var venueTipUrl = "https://api.foursquare.com/v2/venues/"+ venueId + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+				// p2.append("Location: " + call.response.venues[i].location.address + ", " + call.response.venues[i].location.city);
+				// p2.addClass("list-group-item-text");
 
 				console.log(venueId);
 
