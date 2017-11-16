@@ -5,12 +5,23 @@ $(document).ready(function() {
 	var myLats = [];
 	var myLngs = [];
 	var p = $("<p>");
-
+	
 	var wayPointList = [];
 	var listcount = 1;
 
 	var thislist =[] ;
 	$("#direction-panel").hide();
+
+$("#sub4").on("click", function(){
+
+	var location2 = $("#starts").val().trim();
+	
+console.log(location2);
+
+	$("#ends").val(location2);
+
+
+});
 
 	$("#sub3").on("click", function(){
 

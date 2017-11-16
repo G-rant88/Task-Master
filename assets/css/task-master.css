@@ -113,10 +113,24 @@ footer {
 	}
 
 
-	#starts, #ends {
+	#starts {
 
 		width: 219%;
 	}
+
+	#ends {
+
+		width: 466px;
+
+	}
+
+	#sub4 {
+
+		margin-left: -2px;
+
+	}
+
+
 
 	#route {
 
