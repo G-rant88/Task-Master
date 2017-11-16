@@ -139,7 +139,9 @@ $(document).ready(function() {
 								venuePic.attr("src", current.image );
 								venueTip.append(current.tips);
 
-								newDiv.append(p, p2, p3,venuePic, venueTip);
+								newDiv2.append(venuePic, venueTip);
+								newDiv.append(p, p2, p3,newDiv2);
+								
 							
 								$("#list").append(newDiv);
 							
