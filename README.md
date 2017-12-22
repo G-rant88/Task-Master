@@ -1,6 +1,6 @@
 <h1>Welcome to Task Master!</h1>
 
-<p>the deployed app is <a href="https://travelbookapp.herokuapp.com" target="_blank">HERE</a></p>
+<p>the deployed app is <a href="https://g-rant88.github.io/Task-Master" target="_blank">HERE</a></p>
 
 <p>Task Master is the front end task planning and task completing app</p>
 <p>Features:</p>
