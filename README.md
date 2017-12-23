@@ -7,7 +7,7 @@
 <ul>
 	<li>search for any tasks in your area</li>
 	<li>add as many tasks as you want to your task list</li>
-	<li>submit your list to find the fastest route to complete your tasks from your starting location to your ending loation</li>
+	<li>submit your list to find the fastest route to complete your tasks from your starting location to your ending location</li>
   <li>Uses google maps and foursquare to get tasks and find routes</li>
 </ul>
 
