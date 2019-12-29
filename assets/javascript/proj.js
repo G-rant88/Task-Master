@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+
+	var backupId = 'YH0YWR1USH0WZMOEHB4QUN4KDREBLGGJ4URTCLJ4CMNBIGZ1';
+	var backupSecret = 'ERMSG2QGCCAETKYI0KP3SBNBGCHJGITZU1W2WTPIRDHNMEDI';
+	var id ='YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5';
+	var secret = 'UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU';
 	var lat = [];
 	var lng = [];
 	var myLats = [];
@@ -12,6 +17,9 @@ $(document).ready(function() {
 	var listcount = 1;
 
 	var thislist =[] ;
+	var items = ['To Travel is To Live', 'The biggest risk in life, is not taking one', 'When was the last time you did something for the first time?', 'Life begins at the end of your comfort zone', 'Two roads diverged in a wood and I took the one less traveled by.', 'Yesterday, I believe I never would have done what I did today', 'You can, you should, and if you‘re brave enough to start, you will.', 'Life is either a daring adventure or nothing at all', 'Travel far enough, you meet yourself', 'To Live will be an awfully big adventure', 'A ship in harbor is safe, but that is not what ships are built for.', 'The world is big and I want to get a good look at it before it gets dark.'];
+	var item = items[Math.floor(Math.random()*items.length)];
+	$("#slogan").text(item);
 	$("#direction-panel").hide();
 
 	$("#sub4").on("click", function(){
@@ -35,9 +43,9 @@ $(document).ready(function() {
 
 
 		var query = $("#thing1").val().trim();
-		var location = $("#starts").val().trim();
+		var location = $("#searchs").val().trim();
 		
-		var url = "https://api.foursquare.com/v2/venues/search?&query=" + query + "&mode=url&limit=7&near=" + location + "%2C%20CA%2C%20United%20States&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+		var url = "https://api.foursquare.com/v2/venues/search?&query=" + query + "&mode=url&limit=10&near=" + location + "&client_id=" + backupId + "&client_secret=" + backupSecret + "&v=20140806&m=foursquare";
 
 		$.ajax({
 
@@ -47,7 +55,7 @@ $(document).ready(function() {
 		}).done( function (call){
 
 
-			for (var i = 0; i < 7; i++) {
+			for (var i = 0; i < 10; i++) {
 				
 				var newDiv = $("<div>");
 				newDiv.attr("undef", call.response.venues[i].location.address);
@@ -71,8 +79,8 @@ $(document).ready(function() {
 				lng.push(lngs);
 
 				var venueId = call.response.venues[i].id
-				var venuePicUrl = "https://api.foursquare.com/v2/venues/"+ venueId + "/photos?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
-				var venueTipUrl = "https://api.foursquare.com/v2/venues/"+ venueId + "/tips?/&client_id=YDAI3HM532ZHCLP4XBC4Z5OCOO2YN5JT3Q3SP4C3EKDNZKT5&client_secret=UQKRY5R4YPYKDQAQNUCVSSVGGPMUXPQA1XSIJOIQT5ZDO4HU&v=20140806&m=foursquare";
+				var venuePicUrl = "https://api.foursquare.com/v2/venues/"+ venueId + "/photos?/&client_id=" + backupId + "&client_secret=" + backupSecret + "&v=20140806&m=foursquare";
+				var venueTipUrl = "https://api.foursquare.com/v2/venues/"+ venueId + "/tips?/&client_id=" + backupId + "&client_secret=" + backupSecret + "&v=20140806&m=foursquare";
 
 
 				searchResults.push({
@@ -116,6 +124,8 @@ $(document).ready(function() {
 								console.log(current.address);
 
 								var newDiv = $("<div>");
+								var newDivTop = $("<div>");
+								var newDivMid = $("<div>");
 								var p = $("<h4>");
 								var p2 = $("<p>");
 								var p3 = $("<p>");
@@ -129,18 +139,24 @@ $(document).ready(function() {
 
 								p.addClass("list-group-item-heading");
 								p.append("Name: " + current.name);
+								newDivTop.addClass("list-group-div");
+								newDivTop.append(p);
 
 								p2.addClass("list-group-item-text");
 								p2.append("Location: " + current.address);
 								
 								p3.addClass("list-group-item-text");
+								p3.addClass("list-group-category");
 								p3.append("Category: " + current.category);
+								newDivMid.addClass("list-group-div");
+								newDivMid.append(p2, p3);
 
 								venuePic.attr("src", current.image );
 								venueTip.append(current.tips);
 
+								newDiv2.addClass("list-group-div");
 								newDiv2.append(venuePic, venueTip);
-								newDiv.append(p, p2, p3,newDiv2);
+								newDiv.append(newDivTop, newDivMid, newDiv2);
 								
 							
 								$("#list").append(newDiv);

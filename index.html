@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Master Task</title>
+    <title>Trip Master</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/task-master.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Ubuntu:400,500" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiU0yNUkknW32yOxZpTm4Cii_z8YqttuE"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOARDpz_gy-y9997Bdt-e0JY4uxogwmL4"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="assets/javascript/proj.js"></script> 
 </head>
@@ -20,11 +20,15 @@
 
     <div class="container-fluid" >
       <div class="navbar-header" id="header">
-        Task Master
-        <p id="slogan">We get shit pretty much done..</p>
-        <a class="navbar-brand" href="#">
-        <img id="logo" alt="Logo" src="assets/images/tm-logo.png">
-        </a>
+        <div class='logo-headline'>
+           <a class="navbar-brand" href="#">
+            <img id="logo" alt="Logo" src="assets/images/globe.png">
+          </a>
+          <h1>Trip Master</h1>
+        </div>
+        <div class='slogan-headline'>
+          <p id="slogan">To Travel is to Live</p>
+       </div>
       </div>
     </div>
 
@@ -33,22 +37,23 @@
 
   <div class="container">
     <div class="row">
-     <div class="col-lg-6">
+     <div class="col-xs-12 col-lg-6">
 
       <!-- Start of pannel -->
       <div class="panel panel-default" id="input-panel">
 
       <div class="panel-heading" id="panel-heading">
-        <h3 class="panel-title">Let's Start Planning!</h3>
+        <h3 class="panel-title">Let's Start Travelling!</h3>
       </div>
       
       <div class="panel-body">
 
           <form role="form">
+
             <div class="form-group">
               <label for="name-input">Start Location:</label>
               <div class="input-group col-xs-5">
-                  <input type="text" class="form-control starts" id="starts" placeholder="ex: 1085 Gayley Ave, Los Angeles">
+                  <input type="text" class="form-control starts" id="starts" placeholder="ex: Rock Palace Hostel, Barcelona, Spain">
                   <span class="input-group-btn">
                     <div id="starthere"></div>
                   </span>
@@ -59,20 +64,31 @@
 
             <label for="dest-input">End Location:</label>
                 </span>
-            <div class="input-group col-xs-5">
-                <input type="text" class="form-control ends" id="ends" placeholder="ex: Santa Monica Pier">
+            <div class="input-group">
+                <input type="text" class="form-control ends" id="ends" placeholder="ex: La Sagrada Familia, Barcelona, Spain">
                  <span class="input-group-btn">
                 <button class="btn btn-default" id="sub4" type="button">Same</button>
                 </span>
             </div>
+
           </form>
 
       </div>
 
+       <div class="form-group">
+              <label for="name-input">Search Location:</label>
+              <div class="input-group col-xs-5">
+                  <input type="text" class="form-control starts" id="searchs" placeholder="ex: Barcelona, Spain">
+                  <span class="input-group-btn">
+                    <div id="starthere"></div>
+                  </span>
+              </div>
+            </div>
+
         <div class="form-group">
-            <label for="dest-input">Your Task:</label>
+            <label for="dest-input">Your Trip's Activities:</label>
             <div class="input-group">
-                <input type="text" class="form-control thing1" id="thing1" placeholder="ex: groceries">
+                <input type="text" class="form-control thing1" id="thing1" placeholder="ex: tapas">
                 <span class="input-group-btn">
                 <button class="btn btn-default" id="sub3" type="button">Add</button>
                 </span>
@@ -87,7 +103,7 @@
       <!-- task panel -->
       <div class="panel panel-default task" id="input-panel">
         <div class="panel-heading" id="panel-heading">
-          <h3 class="panel-title">Task List</h3>
+          <h3 class="panel-title">Activities List</h3>
         </div>
 
         <div class="panel-body items">
@@ -97,8 +113,6 @@
       
 
       </div>
-        <!--   <button type="button" class="btn btn-default" id="groupons">Find Groupons
-        </button>   -->
         </div>
       </div>
       <!-- end of task panel -->
@@ -106,7 +120,7 @@
    
         <div class="panel panel-default submitbutton" id="input-panel">
   <div class="panel-body">
-  <button type="button" class="btn btn-warning" id="route"><strong>Submit
+  <button type="button" class="btn btn-warning" id="route"><strong>Go!
         </strong></button>    
       </div>
       </div>
@@ -118,7 +132,7 @@
   </div> 
 
     <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-lg-6">
     <div id="list" >
     </div>
 

@@ -37,10 +37,21 @@ body {
 	padding-left: 10px;
 	margin: 0;
 	float: right;
+	font-style: italic;
 }
 
 .container {
 	margin-top: 150px;
+
+}
+
+@media screen and (min-width:700px) and (max-width:800px){
+	.container {
+		margin-top: 185px;
+	}
+	#map {
+    width: 100vw !important;
+  }
 }
 
 #input-panel {
@@ -78,7 +89,8 @@ iframe {
 .list-group-item.active {
 	background-color: #4da9b8;
     box-shadow: 0 0 30px rgba(0,0,0,0.3);
-    border: none;	
+    border: none;
+    cursor: pointer;	
 }
 
 .list-group-item-heading {
@@ -88,8 +100,8 @@ iframe {
 #route {
 
 
-margin: auto 100px;
-margin-left: 109px;
+margin: 0 auto;
+
 
 }
 /*
@@ -113,14 +125,14 @@ footer {
 	}
 
 
-	#starts {
+	#starts, #searchs {
 
 		width: 219%;
 	}
 
 	#ends {
 
-		width: 466px;
+	
 
 	}
 
@@ -146,12 +158,13 @@ footer {
 
 	.navbar {
     margin-bottom: 40px;
+    width:100vw;
 }
 
 .task {
 
 	height: 291.33px;
-	width: 555px;
+
 }
 
 .items {
@@ -170,4 +183,74 @@ footer {
 	height: 150px;
 	box-shadow: 0 0 30px rgba(0,0,0,0.3);
 	overflow: auto;
+}
+
+.list-group{
+	display:flex;
+	flex-direction: column;
+	cursor: pointer;
+}
+
+.list-group-div{
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+    justify-content: flex-start;
+}
+
+#list{
+	max-height: 800px;
+	overflow-y: scroll;
+}
+
+.list-group-div img{
+	padding-right: 8px;
+	padding-top: 8px;
+}
+
+.list-group-category{
+	padding-left:10px;
+}
+
+.submitbutton .panel-body{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+#header, .logo-headline{
+	display: flex;
+	flex-direction: row;
+}
+
+.logo-headline{
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.logo-headline h1{
+	margin-top:25px;
+}
+
+@media screen and (max-width:640px){
+	.logo-headline h1{
+	font-size:20px;
+	}
+	.logo-headline #logo{
+	max-width:40px !important;
+	padding-left:0;
+	padding-bottom:45px;
+	}
+.logo-headline .navbar-brand{
+	padding-left:8px;
+	padding-right:8px;
+}
+.slogan-headline #slogan{
+	padding-top:25px;
+	}
+	#map {
+    width: 100vw;
+  }
+
 }
